@@ -9,13 +9,13 @@
     <style>
         .main {
             width: 60%px;
-            height: 300px;
-            margin: 50px auto;
+            height: 420px;
+            margin: 20px auto 0 auto;
             text-align: center;
         }
 
         img {
-            /* display: inline-block; */
+            /* display: block; */
         }
 
         .hidden {
@@ -24,9 +24,11 @@
 
         .btn {
             display: block;
-            margin: 20px auto;
+            margin: 15px auto;
             width: 100px;
-            height: 20px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
 
         }
     </style>
@@ -38,10 +40,6 @@
         <h3>检测自己的异世界属性</h3>
         <img src="./img/fireKeeper.jpg" alt="">
 
-
-        <div class="hidden">
-            <h3 class="h3">你是🐖</h3>
-        </div>
     </div>
 
     <button class="btn" type="button">
@@ -49,12 +47,11 @@
     </button>
 
     <script>
-        const animal = ['🐖', '🐶', '🐱', '🐟','🐉','🐮','🍺','✈','🍜',];
+        const animal = ['🐖', '🐶', '🐱', '🐟', '🐉', '🐮', '🍺', '✈', '🍜',];
         let index = 0;
         let interval = '';
 
         const main = document.querySelector('.main');
-        const hidden = document.querySelector('.h3');
         const btn = document.querySelector('.btn');
 
 
@@ -63,10 +60,11 @@
             if (innerText == '开始') {
                 interval = setInterval(() => {
 
-                hidden.innerText = `你是${animal[index]}`
-                index++;
-                if (index == animal.length - 1) index = 0;
-            }, 200);
+                    main.innerHTML = `<h1>你是${animal[index]}</h1>`
+
+                    index++;
+                    if (index == animal.length - 1) index = 0;
+                }, 200);
                 btn.innerText = '停止';
             } else {
                 clearInterval(interval)
