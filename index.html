@@ -1,82 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>soma</title>
-    <style>
-        .main {
-            width: 60%px;
-            height: 420px;
-            margin: 20px auto 0 auto;
-            text-align: center;
-        }
-
-        img {
-            /* display: block; */
-        }
-
-        .hidden {
-            /* display: none; */
-        }
-
-        .btn {
-            display: block;
-            margin: 15px auto;
-            width: 100px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-
-        }
-    </style>
+	<title>致敬最爱的浩哥</title>
+	<style>
+		div {
+			display: inline;
+			display: block;
+			display: inline-block;
+		}
+	</style>
 </head>
 
 <body>
-    <div class="main">
-
-        <h3>检测自己的异世界属性</h3>
-        <img src="./img/fireKeeper.jpg" alt="">
-
-    </div>
-
-    <button class="btn" type="button">
-        开始
-    </button>
-
-    <script>
-        const animal = ['🐖', '🐶', '🐱', '🐟', '🐉', '🐮', '🍺', '✈', '🍜',];
-        let index = 0;
-        let interval = '';
-
-        const main = document.querySelector('.main');
-        const btn = document.querySelector('.btn');
-
-
-        btn.addEventListener('click', () => {
-            let innerText = btn.innerText;
-            if (innerText == '开始') {
-                interval = setInterval(() => {
-
-                    main.innerHTML = `<h1>你是${animal[index]}</h1>`
-
-                    index++;
-                    if (index == animal.length - 1) index = 0;
-                }, 200);
-                btn.innerText = '停止';
-            } else {
-                clearInterval(interval)
-                main.innerHTML = `<h1>你是${animal[0]}</h1>`
-                btn.innerText = '开始';
-
-            }
-
-        })
-
-    </script>
-
+	<h1 align="middle">Want more?Please clik!</h1>
+	<div align="center">
+		<a href="sunhao1.html" target="_blank">
+			<img src="pic/4.jpg" alt="霸王" align="center" />
+		</a>
+	</div>
 </body>
 
 </html>
