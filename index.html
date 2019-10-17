@@ -13,6 +13,11 @@
             margin: 50px auto;
             text-align: center;
         }
+
+        .hidden {
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -21,7 +26,29 @@
 
         <h3>这是soma的前端主页</h3>
         <img src="./img/fireKeeper.jpg" alt="">
+
+        <div class="hidden">
+                <h3>你是🐖</h3>
+        </div>
     </div>
+
+    
+
+    <script>
+        const main = document.querySelector('.main');
+        const hidden = document.querySelector('.hidden');
+
+        main.addEventListener('click',() => {
+            hidden.style.hidden = 'block';
+            main.innerText = "你是🐖"
+            console.log('你是🐖')
+        })
+
+        setTimeout(() => {
+            main.innerHTML = "你是🐖"
+
+        },1000);
+    </script>
 
 </body>
 
