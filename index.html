@@ -8,46 +8,75 @@
     <title>soma</title>
     <style>
         .main {
-            width:1000px;
+            width: 1000px;
             height: 500px;
             margin: 50px auto;
             text-align: center;
         }
 
-        .hidden {
-            display: none;
+        img {
+            /* display: inline-block; */
         }
 
+        .hidden {
+            /* display: none; */
+        }
+
+        .btn {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+            height: 20px;
+
+        }
     </style>
 </head>
 
 <body>
     <div class="main">
 
-        <h3>这是soma的前端主页</h3>
+        <h3>检测自己的异世界属性</h3>
         <img src="./img/fireKeeper.jpg" alt="">
 
+
         <div class="hidden">
-                <h3>你是🐖</h3>
+            <h3 class="h3">你是🐖</h3>
         </div>
     </div>
 
-    
+    <button class="btn" type="button">
+        开始
+    </button>
 
     <script>
-        const main = document.querySelector('.main');
-        const hidden = document.querySelector('.hidden');
+        const animal = ['🐖', '🐶', '🐱', '🐟'];
+        let index = 0;
+        let interval = '';
 
-        main.addEventListener('click',() => {
-            hidden.style.hidden = 'block';
-            main.innerText = "你是🐖"
-            console.log('你是🐖')
+        const main = document.querySelector('.main');
+        const hidden = document.querySelector('.h3');
+        const btn = document.querySelector('.btn');
+
+
+        btn.addEventListener('click', () => {
+            let innerText = btn.innerText;
+            if (innerText == '开始') {
+                interval = setInterval(() => {
+
+                hidden.innerText = `你是${animal[index]}`
+                index++;
+                if (index == animal.length - 1) index = 0;
+            }, 200);
+                btn.innerText = '停止';
+            } else {
+                clearInterval(interval)
+                main.innerHTML = `<h1>你是${animal[0]}</h1>`
+                btn.innerText = '开始';
+
+            }
+
         })
 
-        setTimeout(() => {
-            main.innerHTML = "你是🐖"
-
-        },1000);
     </script>
 
 </body>
