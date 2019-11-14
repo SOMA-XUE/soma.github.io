@@ -3,80 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0,minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>soma</title>
-    <style>
-        .main {
-            width: 60%px;
-            height: 420px;
-            margin: 20px auto 0 auto;
-            text-align: center;
-        }
-
-        img {
-            /* display: block; */
-        }
-
-        .hidden {
-            /* display: none; */
-        }
-
-        .btn {
-            display: block;
-            margin: 15px auto;
-            width: 100px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-
-        }
-    </style>
+    <title>Document</title>
+    <script src="./rem.js"></script>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./qianDao.css">
 </head>
 
 <body>
     <div class="main">
+        
+        <div class="header">
+            <div class="content">
+                <p class="headerTitle1">
+                    每日签到
+                </p>
+                <p class="headerTitle2">享好礼</p>
 
-        <h3>检测自己的异世界属性</h3>
-        <img src="./img/fireKeeper.jpg" alt="">
+                <div class="qianDao">
+                    已签到
+                </div>
+            </div>
+        </div>
+
 
     </div>
-
-    <button class="btn" type="button">
-        开始
-    </button>
-
-    <script>
-        const animal = ['🐖', '🐶', '🐱', '🐟', '🐉', '🐮', '🍺', '✈', '🍜',];
-        let index = 0;
-        let interval = '';
-
-        const main = document.querySelector('.main');
-        const btn = document.querySelector('.btn');
-
-
-        btn.addEventListener('click', () => {
-            let innerText = btn.innerText;
-            if (innerText == '开始') {
-                interval = setInterval(() => {
-
-                    main.innerHTML = `<h1>你是${animal[index]}</h1>`
-
-                    index++;
-                    if (index == animal.length - 1) index = 0;
-                }, 200);
-                btn.innerText = '停止';
-            } else {
-                clearInterval(interval)
-                main.innerHTML = `<h1>你是${animal[0]}</h1>`
-                btn.innerText = '开始';
-
-            }
-
-        })
-
-    </script>
-
 </body>
 
 </html>
