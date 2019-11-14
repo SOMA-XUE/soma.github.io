@@ -48,7 +48,8 @@ body,
     color: #d1a360;
     font-size: 0.36rem;
     text-align: left;
-    padding-left: 1rem;
+    padding: 0 1rem;
+    line-height: 0.76rem;
 }
 
 .explain span {
