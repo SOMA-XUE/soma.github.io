@@ -3,9 +3,6 @@ function windowResize() {
     let width = window.innerWidth;
     width = Math.max(width, 320)
     width = Math.min(width, 750)
-
-    // document.querySelector('html').setAttribute('fontSize', width / 15 + 'px');
-    console.log('fontSize', width /15)
     document.querySelector('html').style.fontSize = width /15 +'px';
 
 }
