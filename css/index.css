@@ -17,10 +17,9 @@
 }
 .signIn .signInGift {
   width: 13rem /* 544/50 */;
-  height: 25.16rem /* 1058/50 */;
+  height: 25.4rem /* 1058/50 */;
   margin: 0 auto;
   margin-top: 10.1rem /* 424/50 */;
-  background-color: skyblue;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -29,8 +28,25 @@
 }
 .signIn .signInGift .giftItem {
   width: 2.4rem /* 94/50 */;
-  height: 3.4rem /* 156/50 */;
-  border: 1px solid black;
+  height: 3.7rem /* 156/50 */;
+}
+.signIn .signInGift .giftItem p {
+  text-align: center;
+  font-size: 0.28rem /* 14/50 */;
+}
+.signIn .signInGift .giftItem .giftItemHead {
+  color: #fbe5b4;
+  font-weight: bold;
+}
+.signIn .signInGift .giftItem .giftItemBody {
+  width: 100%;
+  height: 2.4rem;
+  border: 1px solid #564328;
+  border-radius: 0.08rem /* 4/50 */;
+  margin: 0.1rem 0;
+}
+.signIn .signInGift .giftItem .giftItemFoot {
+  color: #d1a360;
 }
 .signIn .signInFooter {
   width: 100%;
