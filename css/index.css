@@ -21,6 +21,16 @@
   margin: 0 auto;
   margin-top: 10.1rem /* 424/50 */;
   background-color: skyblue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: space-between;
+}
+.signIn .signInGift .giftItem {
+  width: 2.4rem /* 94/50 */;
+  height: 3.4rem /* 156/50 */;
+  border: 1px solid black;
 }
 .signIn .signInFooter {
   width: 100%;

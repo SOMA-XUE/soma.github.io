@@ -12,17 +12,15 @@ Zepto(function ($) {
   $('.signInBtn').tap(() => {
     $('.signInBtn').css('background', 'white')
   })
-  //   $('.signInBtn').on('touch', () => {
-  //     $('.signInBtn').text(`${1++}`)
-  //   })
+
 
   // 发送ajax请求, 进行登录
   $.ajax({
     type: "post",
     url: "/user/login",
     data: {
-      username: username,
-      password: password
+      username: 'username',
+      password: 'password',
     },
     dataType: "json",
     success: function (info) {
