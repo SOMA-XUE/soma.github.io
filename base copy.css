@@ -1,0 +1,51 @@
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color:#FFFFFF;
+  font-family: 'Microsoft YaHei',arial,sans-serif,'Droid Sans Fallback';
+}
+
+/*css初始化*/
+/*清除内外边距*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,img{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+*{
+    box-sizing:border-box;
+}
+em{
+    font-style: normal;
+}
+/*重置列表元素*/
+ul,li{
+    list-style: none;
+}
+/*重置超链接元素*/
+a{
+    text-decoration: none;
+    color: #333333;
+}
+a:hover{
+    text-decoration: underline;
+    color: #f40;
+}
+/*重置图片元素*/
+img{
+    border: 0px;
+    vertical-align:middle;
+}
+/*重置表格元素*/
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+ 
+html,body{
+    font-family:Helvetica;
+    height: 100%;
+    color: #333;
+}
