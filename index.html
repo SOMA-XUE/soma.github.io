@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/testInput.css">
 </head>
+
 <body>
     <div class="wraper">
         <div class="header">
@@ -20,5 +22,18 @@
 
         </div>
     </div>
+
+    <script>
+        //window.onresize 监听页面大小变化，该方法只会在安卓执行
+        window.onresize = function () {
+            if (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA") {
+                let ele = document.activeElement;
+                setTimeout(() => {
+                    ele.scrollIntoView();//焦点元素滚到可视区域的问题
+                }, 0);
+            }
+        }
+    </script>
 </body>
+
 </html>
