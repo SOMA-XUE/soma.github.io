@@ -18,7 +18,7 @@
         <div class="phoneNumDiv">
             <!-- <img src="//gskd.sdoprofile.com/daoyu/yyxH5/text_yxm.png" class="phoneNumImgTit" alt=""> -->
             <p class="phoneNumTitle">请输入手机号</p>
-            <input type="number" class="phoneNum">
+            <input type="number" class="phoneNum" placeholder="现只支持大陆地区手机号">
             <img src="//gskd.sdoprofile.com/daoyu/yyxH5/btn_yyty.png" class="book" alt="">
         </div>
 
@@ -31,9 +31,12 @@
                 <p class="modalMainContent">感谢您的支持</p>
             </div>
         </div>
+
+        
     </div>
 
     <script src="./zepto-1.1.6.js"></script>
+    <script src="./lib.js"></script>
     <script>
         function windowResize() {
             let width = window.innerWidth;
@@ -52,14 +55,14 @@
 
             window.dispatchEvent(new Event('resize'));
 
-            var h = document.body.scrollHeight;
-            window.onresize = function () {
-                if (document.body.scrollHeight < h) {
-                    document.getElementsByTagName("nav")[0].style.display = "none";
-                } else {
-                    document.getElementsByTagName("nav")[0].style.display = "block";
-                }
-            };
+            // var h = document.body.scrollHeight;
+            // window.onresize = function () {
+            //     if (document.body.scrollHeight < h) {
+            //         document.getElementsByTagName("nav")[0].style.display = "none";
+            //     } else {
+            //         document.getElementsByTagName("nav")[0].style.display = "block";
+            //     }
+            // };
 
             const showModal = function () {
                 $('.bg').attr('src', '//gskd.sdoprofile.com/daoyu/yyxH5/bg_yyty_cg2.png');
@@ -83,6 +86,7 @@
             }
 
             $('.book').on('click', () => {
+                tipsModal('hello', 'ljflkdsjfls');
                 function handleBug() {
                     let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
                     window.scrollTo(0, Math.max(scrollHeight - 1, 0))
@@ -105,11 +109,8 @@
                     success: function (res) {
                         if (res.return_code === 0) {
                             showModal();
-                            console.log('预约成功');
                         } else {
-                            showModal(res.return_message);
-                            console.log(res.return_message);
-                            alert(res.return_message)
+                            alert('对不起，您的手机号可能格式错误，请重新输入！')
                         }
                     },
                     error: function (err) {
