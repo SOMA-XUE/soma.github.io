@@ -79,13 +79,14 @@
                 let phoneNum = $('.phoneNum').val(); // string格式的
                 $.ajax({
                     type: 'GET',
-                    // url: '//daoyu8.com/mLottery/cloudGame/book',
-                    url: '//sdo.com/mLottery/cloudGame/book',
+                    url: '//www.daoyu8.com/mLottery/cloudGame/book',
+                    // url: 'https://www.sdo.com/get/data?&key=mobile_index',
                     data: {
                         phone: phoneNum,
                     },
                     dataType: 'jsonp',
                     jsonp: "fn_callback",
+                    // jsonp: "getSpread_JSONPMobileMethod",
                     success: function (res) {
                         if (res.return_code === 0) {
                             showModal();
@@ -96,9 +97,9 @@
                             alert(res.return_message)
                         }
                     },
-                    error: function () {
-                        console.log('ajax error');
-                        alert('ajax error')
+                    error: function (err) {
+                        console.log(err);
+                        alert(err)
 
                         
                     }
