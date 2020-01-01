@@ -12,21 +12,21 @@
 </head>
 
 <body>
-        <div class="cloudGameBook">
-        
-                <div class="phoneNumDiv">
-                    <p class="phoneNumTitle">请输入手机号</p>
-                    <input type="number" class="phoneNum">
-                    <button type="button" class="book">预约体验</button>
-                </div>
-        
-        
-                <div class="modal">
-                    <div class="modalMain">
-                        <p class="modalMainContent"></p>
-                    </div>
-                </div>
+    <div class="cloudGameBook">
+
+        <div class="phoneNumDiv">
+            <p class="phoneNumTitle">请输入手机号</p>
+            <input type="number" class="phoneNum">
+            <button type="button" class="book">预约体验</button>
+        </div>
+
+
+        <div class="modal">
+            <div class="modalMain">
+                <p class="modalMainContent"></p>
             </div>
+        </div>
+    </div>
 
     <script src="./zepto-1.1.6.js"></script>
     <script>
@@ -38,18 +38,18 @@
             if (pathName === '/m/signIn' || pathName === '/m/actwelfare' || pathName === '/m/date') {
                 document.querySelector('html').style.fontSize = width / 15 + 'px';
             }
-            console.log('width / 15',width / 15);
+            console.log('width / 15', width / 15);
         }
         window.addEventListener('resize', windowResize);
         Zepto(function ($) {
             window.dispatchEvent(new Event('resize'));
-            const showModal = function(v) {
-                $('.modalMainContent').css('display','block');
+            const showModal = function (v) {
+                $('.modalMainContent').css('display', 'block');
                 $('.modalMainContent').text(v);
             }
 
-            const closeModal = function() {
-                $('.modalMainContent').css('display','none');
+            const closeModal = function () {
+                $('.modalMainContent').css('display', 'none');
                 $('.modalMainContent').text('');
             }
 
@@ -67,9 +67,17 @@
             if (getOs() == 'pc') {
                 // TODO
             }
-            
+
             $('.book').on('click', () => {
                 // console.log('手机号码',$('.phoneNum').val())
+                function handleBug() {
+
+                    let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
+
+                    window.scrollTo(0, Math.max(scrollHeight - 1, 0))
+
+                }
+                handleBug();
                 let phoneNum = $('.phoneNum').val(); // string格式的
                 if (!/^1\d{10}$/.test(phoneNum)) {
                     // 19911112222
