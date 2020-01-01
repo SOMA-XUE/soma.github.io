@@ -77,12 +77,6 @@
                 }
                 handleBug();
                 let phoneNum = $('.phoneNum').val(); // string格式的
-                if (!/^1\d{10}$/.test(phoneNum)) {
-                    // 19911112222
-                    // $('.modalMainContent').text('phone格式error')
-                    // showModal('phone格式error');
-                    return console.log('phone error');
-                }
                 $.ajax({
                     type: 'GET',
                     url: 'https://daoyu.sdo.com/mLottery/cloudGame/book',
@@ -104,6 +98,12 @@
                         console.log('ajax error');
                     }
                 })
+            })
+            $('.book').on('focus',() => {
+                $('.phoneNumDiv').css('display', 'fixed');
+            })
+            $('.book').on('flur',() => {
+                $('.phoneNumDiv').css('display', 'absolute');
             })
         })
     </script>
