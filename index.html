@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
     <script src="./zepto-1.1.6.js"></script>
@@ -86,7 +86,6 @@
             }
 
             $('.book').on('click', () => {
-                tipsModal('hello', 'ljflkdsjfls');
                 function handleBug() {
                     let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
                     window.scrollTo(0, Math.max(scrollHeight - 1, 0))
@@ -94,7 +93,9 @@
                 handleBug();
                 let phoneNum = $('.phoneNum').val(); // string格式的
                 if (phoneNum === '') {
-                    return alert('请输入手机号');
+                    if (phoneNum === '') {
+                     return tipsModal('提示', '请输入手机号');
+                }
                 }
                 $.ajax({
                     type: 'GET',
@@ -119,12 +120,12 @@
                     }
                 })
             })
-            // $('.phoneNum').on('focus',() => {
-            //     $('.phoneNumDiv').css('display', 'fixed');
-            // })
-            // $('.phoneNum').on('blur',() => {
-            //     $('.phoneNumDiv').css('display', 'absolute');
-            // })
+            $('.phoneNum').on('focus',() => {
+                $('.phoneNumDiv').css('display', 'fixed');
+            })
+            $('.phoneNum').on('blur',() => {
+                $('.phoneNumDiv').css('display', 'absolute');
+            })
         })
     </script>
 </body>
