@@ -22,7 +22,7 @@ img {
 .phoneNumDiv {
     position : absolute;
     left     : 50%;
-    top      : 40%;
+    bottom      : 38%;
     transform: translateX(-50%);
     width    : 100%;
 }
