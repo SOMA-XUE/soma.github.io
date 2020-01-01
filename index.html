@@ -92,10 +92,14 @@
                         } else {
                             showModal(res.return_message);
                             console.log(res.return_message);
+                            alert(res.return_message)
                         }
                     },
                     error: function () {
                         console.log('ajax error');
+                        alert('ajax error')
+
+                        
                     }
                 })
             })
