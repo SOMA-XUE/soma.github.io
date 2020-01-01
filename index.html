@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>盛趣云游戏预约</title>
     <link rel="stylesheet" href="./base.css">
     <link rel="stylesheet" href="./cloudGameBook.css">
 </head>
@@ -27,15 +28,41 @@
     <script src="./zepto-1.1.6.js"></script>
     <script>
         Zepto(function ($) {
-            // alert('Ready to Zepto!')
+            const showModal = function(v) {
+                $('.modalMainContent').css('display','block');
+                $('.modalMainContent').text(v);
+            }
+
+            const closeModal = function() {
+                $('.modalMainContent').css('display','none');
+                $('.modalMainContent').text('');
+            }
+
+            const getOs = function () {
+                var u = navigator.userAgent.toUpperCase();
+                if (u.indexOf("ANDROID") > -1) {
+                    return "android"
+                }
+                if (u.indexOf("IPHONE") > -1 || u.indexOf("IPAD") > -1) {
+                    return "ios"
+                }
+                return "pc"
+            }
+
+            if (getOs() == 'pc') {
+                // TODO
+                window.location.replace('http://www.baidu.com');
+            }
+            
             $('.book').on('click', () => {
                 // console.log('手机号码',$('.phoneNum').val())
                 let phoneNum = $('.phoneNum').val(); // string格式的
                 if (!/^1\d{10}$/.test(phoneNum)) {
+                    // 19911112222
                     // 手机号码格式错误
                     // TODO 提示用户
-
-                    $('.modalMainContent').text('phone error')
+                    // $('.modalMainContent').text('phone格式error')
+                    showModal('phone格式error');
                     return console.log('phone error');
                 }
                 $.ajax({
@@ -45,24 +72,18 @@
                         phone: phoneNum,
                     },
                     dataType: 'jsonp',
-                    jsonp: "callback", // cb
-                    // jsonpCallback: "success_jsonpCallback",
+                    jsonp: "fn_callback",
                     success: function (res) {
-
-                        console.log(res);
                         if (res.return_code === 0) {
-                            $('.modalMainContent').text('预约成功')
-
+                            showModal('预约成功');
                             console.log('预约成功');
                         } else {
-                            $('.modalMainContent').text(res.return_message)
-
+                            showModal(res.return_message);
                             console.log(res.return_message);
                         }
                     },
                     error: function () {
-                        $('.modalMainContent').text('ajax error')
-
+                        showModal('ajax error');
                         console.log('ajax error');
                     }
                 })
