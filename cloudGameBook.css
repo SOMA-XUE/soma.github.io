@@ -26,9 +26,15 @@ img {
 .phoneNumDiv {
     position : absolute;
     left     : 50%;
-    bottom      : 36%;
+    top      : 24%;
     transform: translateX(-50%);
     width    : 100%;
+}
+.phoneNumImgTit {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 .phoneNumTitle {
