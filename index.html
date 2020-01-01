@@ -12,22 +12,37 @@
 </head>
 
 <body>
-    <div class="cloudGameBook">
-        <br><br>
-        <input type="number" class="phoneNum">
-        <br><br>
-        <button type="button" class="book">预约</button>
-
-        <div class="modal">
-            <div class="modalMain">
-                <p class="modalMainContent"></p>
+        <div class="cloudGameBook">
+        
+                <div class="phoneNumDiv">
+                    <p class="phoneNumTitle">请输入手机号</p>
+                    <input type="number" class="phoneNum">
+                    <button type="button" class="book">预约体验</button>
+                </div>
+        
+        
+                <div class="modal">
+                    <div class="modalMain">
+                        <p class="modalMainContent"></p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
     <script src="./zepto-1.1.6.js"></script>
     <script>
+        function windowResize() {
+            let width = window.innerWidth;
+            width = Math.max(width, 320)
+            width = Math.min(width, 750)
+            const pathName = window.location.pathname;
+            if (pathName === '/m/signIn' || pathName === '/m/actwelfare' || pathName === '/m/date') {
+                document.querySelector('html').style.fontSize = width / 15 + 'px';
+            }
+            console.log('width / 15',width / 15);
+        }
+        window.addEventListener('resize', windowResize);
         Zepto(function ($) {
+            window.dispatchEvent(new Event('resize'));
             const showModal = function(v) {
                 $('.modalMainContent').css('display','block');
                 $('.modalMainContent').text(v);
@@ -51,7 +66,6 @@
 
             if (getOs() == 'pc') {
                 // TODO
-                window.location.replace('http://www.baidu.com');
             }
             
             $('.book').on('click', () => {

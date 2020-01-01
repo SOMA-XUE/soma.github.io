@@ -4,12 +4,41 @@ body,
     width           : 100%;
     height          : 100%;
     background-color: white;
+    color           : #fff;
 }
 
 .cloudGameBook {
-    -webkit-user-select:text !important;
+    -webkit-user-select: text !important;
+    background-color   : skyblue;
+    text-align: center;
+
+}
+
+.phoneNumDiv {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.phoneNumTitle {
+    font-size  : 1.44rem;
+    line-height: 1.44rem;
+}
+
+.phoneNum {
+    display: block;
+    width  : 67%;
+    height: 2.88rem;
+    margin : 0 auto;
+    margin-top: 2.4rem;
+    margin-bottom: 2.8rem;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .book {
-    -webkit-user-select:text !important;
+    -webkit-user-select: text !important;
 }
+
