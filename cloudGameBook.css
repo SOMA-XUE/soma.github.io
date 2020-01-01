@@ -1,0 +1,15 @@
+html,
+body,
+.cloudGameBook {
+    width           : 100%;
+    height          : 100%;
+    background-color: white;
+}
+
+.cloudGameBook {
+    -webkit-user-select:text !important;
+}
+
+.book {
+    -webkit-user-select:text !important;
+}
