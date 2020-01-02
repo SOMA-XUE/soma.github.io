@@ -21,7 +21,7 @@
             <input type="number" class="phoneNum" placeholder="现只支持大陆地区手机号">
             <div class="picCodeDiv">
                 <input type="text" class="picCode" placeholder="输入验证码">
-                <img src="./img/pic_yzm.png" alt="" class="picUrl">
+                <img src="./img/pic_yzm1.png" alt="" class="picUrl">
                 <img src="./img/btn_sx.png" alt="" class="refresh">
             </div>
             <img src="//gskd.sdoprofile.com/daoyu/yyxH5/btn_yyty.png" class="book" alt="">
@@ -55,6 +55,40 @@
         }
         window.addEventListener('resize', windowResize);
 
+        // session——key
+        let captcha_session_key = '';
+
+        function initPicUrl() {
+            // 拿验证码
+            $.ajax({
+                type: 'GET',
+                url: '//www.daoyu8.com/mLottery/cloudGame/book',
+                // url: 'https://www.sdo.com/get/data?&key=mobile_index',
+                data: {
+                    phone: '',
+                },
+                dataType: 'jsonp',
+                jsonp: "fn_callback",
+                // jsonp: "getSpread_JSONPMobileMethod",
+                success: function (res) {
+                    if (res.return_code === 0) {
+                        if (res.data.need_check_captcha != 0) {
+                            // 拿验证码
+                            $('.picUrl').attr('src', res.data.captcha_url);
+                        }
+                    } else {
+                        alert('对不起，您的手机号可能格式错误，请重新输入！')
+                    }
+                },
+                error: function (err) {
+                    console.log('');
+                }
+            })
+        }
+
+
+
+        initPicUrl();
 
         Zepto(function ($) {
 
@@ -90,17 +124,32 @@
                 // TODO
             }
 
+            $('.refresh').on('click', () => {
+                initPicUrl();
+            })
+
+            $("#mb_btn_ok").on('click', () => {
+                document.querySelector('#mb_box')[0].classList.remove('show');
+                document.getElementsByTagName('body')[0].classList.remove('bodyOver');
+            })
+
             $('.book').on('click', () => {
+                $('.picCode').val('')
                 function handleBug() {
                     let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
                     window.scrollTo(0, Math.max(scrollHeight - 1, 0))
                 }
                 handleBug();
                 let phoneNum = $('.phoneNum').val(); // string格式的
+                let captcha_code = $('.picCode').val();
                 if (phoneNum === '') {
-                    if (phoneNum === '') {
-                     return tipsModal('提示', '请输入手机号');
+                    tipsModal('提示', '请输入手机号');
+                    document.querySelector('#mb_box')[0].classList.add('show');
+                    document.getElementsByTagName('body')[0].classList.add('bodyOver');
+                    return;
                 }
+                if (captcha_code === '') {
+                    return tipsModal('提示', '请输入验证码');
                 }
                 $.ajax({
                     type: 'GET',
@@ -125,10 +174,10 @@
                     }
                 })
             })
-            $('.phoneNum').on('focus',() => {
+            $('.phoneNum').on('focus', () => {
                 $('.phoneNumDiv').css('display', 'fixed');
             })
-            $('.phoneNum').on('blur',() => {
+            $('.phoneNum').on('blur', () => {
                 $('.phoneNumDiv').css('display', 'absolute');
             })
         })

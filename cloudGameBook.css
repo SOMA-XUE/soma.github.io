@@ -13,7 +13,7 @@ body {
 
 .cloudGameBook {
     -webkit-user-select: text !important;
-    background-color   : skyblue;
+    background-color   : #fff;
     text-align         : center;
 
 }
@@ -124,5 +124,28 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .refresh {
     width: 15.6%;
     /* height       : 2.88rem; */
+}
 
+/* 禁止触摸穿透 */
+.bodyOver{
+    overflow-y: hidden;
+}
+.contentBox{
+    text-align: center;
+    width:100vw;
+    height: 200vh
+}
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(66, 66, 66, 0.5);
+    text-align: center;
+    padding-top:20%;
+}
+.show{
+    display: block;
 }
