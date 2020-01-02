@@ -26,7 +26,7 @@ img {
 .phoneNumDiv {
     position : absolute;
     left     : 50%;
-    top      : 35%;
+    top      : 30%;
     transform: translateX(-50%);
     width    : 100%;
 }
@@ -44,13 +44,31 @@ img {
 
 .phoneNum {
     display      : block;
-    width        : 67%;
+    width        : 72%;
     height       : 2.88rem;
     margin       : 0 auto;
     margin-top   : 2.4rem;
-    margin-bottom: 2.8rem;
+    margin-bottom: 1.6rem;
     font-size    : 1.2rem;
     text-align   : center;
+
+}
+input {
+    border: none;
+    outline: none;
+}
+input::-webkit-input-placeholder{
+    color:rgba(204, 204, 204, .9);
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:rgba(204, 204, 204, .9);
+
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:rgba(204, 204, 204, .9);
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color:rgba(204, 204, 204, .9);    
 }
 
 .book {
@@ -73,13 +91,38 @@ img {
 
 .modal img {
     display: block;
-    width: 20%;
+    width: 25%;
     margin : 0 auto;
     margin-bottom: 2.4rem;
 }
 
 .modalMainContent {
-    font-size: 1.76rem;
-    line-height: 2.88rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
     text-align: center;
+}
+
+.picCodeDiv {
+    height       : 2.88rem;
+    display: flex;
+    width        : 72%;
+    margin: 0 auto;
+    margin-bottom: 2.8rem;
+}
+
+.picCode {
+    display: block;
+    width: 42.8%;
+    font-size    : 1.2rem;
+    text-align   : center;
+}
+.picUrl {
+    /* width: 40%; */
+    height       : 2.88rem;
+    max-width: 43%;
+}
+.refresh {
+    width: 15.6%;
+    /* height       : 2.88rem; */
+
 }
