@@ -1,232 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>盛趣云游戏预约</title>
-    <link rel="stylesheet" href="./base.css">
-    <link rel="stylesheet" href="./cloudGameBook.css">
-</head>
+<!docutype html>
+<html>
+    <head>
+        <title>modal-test</title>
+        <style type='text/css'>
+            .bodyOver{
+                overflow-y: hidden;
+            }
+            .contentBox{
+                text-align: center;
+                width:100vw;
+                height: 200vh
+            }
+            .modal{
+                display: none;
+                position: fixed;
+                top:0;
+                left:0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(66, 66, 66, 0.5);
+                text-align: center;
+                padding-top:20%;
+            }
+            .show{
+                display: block;
+            }      
+        </style>
+    </head>
+    <body>
+        <div class='contentBox'>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>------------------------------------</p>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>+++++++++++++++++++++++++++++++++++++</p>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>*************************************</p>
 
-<body>
-    <div class="cloudGameBook">
-        <img src="//gskd.sdoprofile.com/daoyu/yyxH5/bg_yyty_kong2.png" class="bg" alt="">
 
-        <div class="phoneNumDiv">
-            <!-- <img src="//gskd.sdoprofile.com/daoyu/yyxH5/text_yxm.png" class="phoneNumImgTit" alt=""> -->
-            <p class="phoneNumTitle">请输入手机号</p>
-            <input type="number" class="phoneNum" placeholder="现只支持大陆地区手机号">
-            <div class="picCodeDiv">
-                <input type="text" class="picCode" placeholder="输入验证码">
-                <img src="" alt="" class="picUrl">
-                <img src="./img/btn_sx.png" alt="" class="refresh">
-            </div>
-            <img src="//gskd.sdoprofile.com/daoyu/yyxH5/btn_yyty.png" class="book" alt="">
+
+            <Button id='toggleModal'>Modal</Button>
         </div>
-
-
-        <div class="modal">
-            <div class="modalMain">
-                <img src="//gskd.sdoprofile.com/daoyu/yyxH5/pic_gou.png" alt="">
-                <p class="modalMainContent">您好 ！</p>
-                <p class="modalMainContent">您的预约申请已成功提交，</p>
-                <p class="modalMainContent">感谢您的支持</p>
-            </div>
+        <div class='modal'>
+            <button id='btnInModal'>click test </button>
         </div>
-
-
-    </div>
-
-    <script>
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    flag = false;
-                    console.log(Agents[v])
-
-                    break;
-                }
-            }
-            return flag;
-        }
-
-        IsPC();
-    </script>
-    <script src="./zepto-1.1.6.js"></script>
-    <script src="./lib.js"></script>
-    <script>
-
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    flag = false;
-                    console.log(Agents[v])
-
-                    break;
-                }
-            }
-            return flag;
-        }
-
-        IsPC();
-
-        function windowResize() {
-            let width = window.innerWidth;
-            width = Math.max(width, 320)
-            width = Math.min(width, 750)
-            const pathName = window.location.pathname;
-            if (pathName === '/m/signIn' || pathName === '/m/actwelfare' || pathName === '/m/date') {
-                document.querySelector('html').style.fontSize = width / 15 + 'px';
-            }
-            console.log('width / 15', width / 15);
-        }
-        window.addEventListener('resize', windowResize);
-
-        // session——key
-        let captcha_session_key = '';
-
-        function initPicUrl() {
-            // 拿验证码
-            $.ajax({
-                type: 'GET',
-                url: '//www.daoyu8.com/mLottery/cloudGame/book',
-                // url: 'https://www.sdo.com/get/data?&key=mobile_index',
-                data: {
-                    phone: '',
-                },
-                dataType: 'jsonp',
-                jsonp: "fn_callback",
-                // jsonp: "getSpread_JSONPMobileMethod",
-                success: function (res) {
-                    if (res.return_code === 0) {
-                        if (res.data.need_check_captcha != 0) {
-                            // 拿验证码
-                            $('.picUrl').attr('src', res.data.captcha_url);
-                        }
-                    } else {
-                        alert('对不起，您的手机号可能格式错误，请重新输入！')
-                    }
-                },
-                error: function (err) {
-                    console.log('');
-                }
+        <script src="./zepto-1.1.6.js"></script>
+        <script>
+            document.getElementById('toggleModal').addEventListener('click', () => {
+                // document.getElementsByClassName('modal')[0].classList.add('show');
+                // document.getElementsByTagName('body')[0].classList.add('bodyOver');
+                $('body').css('overflow','hidden')
             })
-        }
+            document.getElementById('btnInModal').addEventListener('click', () => {
+                // document.getElementsByClassName('modal')[0].classList.remove('show');
+                // document.getElementsByTagName('body')[0].classList.remove('bodyOver');
+                $('body').css('overflow','scroll')
 
-
-
-        initPicUrl();
-
-        Zepto(function ($) {
-
-            window.dispatchEvent(new Event('resize'));
-
-            // var h = document.body.scrollHeight;
-            // window.onresize = function () {
-            //     if (document.body.scrollHeight < h) {
-            //         document.getElementsByTagName("nav")[0].style.display = "none";
-            //     } else {
-            //         document.getElementsByTagName("nav")[0].style.display = "block";
-            //     }
-            // };
-
-            const showModal = function () {
-                $('.bg').attr('src', '//gskd.sdoprofile.com/daoyu/yyxH5/bg_yyty_cg2.png');
-                $('.phoneNumDiv').css('display', 'none');
-                $('.modal').css('display', 'block');
-            }
-
-            const getOs = function () {
-                var u = navigator.userAgent.toUpperCase();
-                if (u.indexOf("ANDROID") > -1) {
-                    return "android"
-                }
-                if (u.indexOf("IPHONE") > -1 || u.indexOf("IPAD") > -1) {
-                    return "ios"
-                }
-                return "pc"
-            }
-
-            if (getOs() == 'pc') {
-                // TODO
-            }
-
-            $('.refresh').on('click', () => {
-                initPicUrl();
             })
-
-            $("#mb_btn_ok").on('click', () => {
-                document.querySelector('#mb_box')[0].classList.remove('show');
-                document.getElementsByTagName('body')[0].classList.remove('bodyOver');
-            })
-
-            //mb_box
-            $('#mb_box').on('touchmove', function (event) {
-                event.preventDefault();
-            });
-
-            $('.book').on('click', () => {
-                $('.picCode').val('')
-                function handleBug() {
-                    let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
-                    window.scrollTo(0, Math.max(scrollHeight - 1, 0))
-                }
-                handleBug();
-                let phoneNum = $('.phoneNum').val(); // string格式的
-                let captcha_code = $('.picCode').val();
-                if (phoneNum === '') {
-                    tipsModal('提示', '请输入手机号');
-                    document.querySelector('#mb_box')[0].classList.add('show');
-                    document.getElementsByTagName('body')[0].classList.add('bodyOver');
-                    return;
-                }
-                if (captcha_code === '') {
-                    return tipsModal('提示', '请输入验证码');
-                }
-                $.ajax({
-                    type: 'GET',
-                    url: '//www.daoyu8.com/mLottery/cloudGame/book',
-                    // url: 'https://www.sdo.com/get/data?&key=mobile_index',
-                    data: {
-                        phone: phoneNum,
-                    },
-                    dataType: 'jsonp',
-                    jsonp: "fn_callback",
-                    // jsonp: "getSpread_JSONPMobileMethod",
-                    success: function (res) {
-                        if (res.return_code === 0) {
-                            showModal();
-                        } else {
-                            alert('对不起，您的手机号可能格式错误，请重新输入！')
-                        }
-                    },
-                    error: function (err) {
-                        console.log(err);
-                        alert(err)
-                    }
-                })
-            })
-            $('.phoneNum').on('focus', () => {
-                $('.phoneNumDiv').css('display', 'fixed');
-            })
-            $('.phoneNum').on('blur', () => {
-                $('.phoneNumDiv').css('display', 'absolute');
-            })
-        })
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>
