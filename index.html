@@ -82,15 +82,14 @@
         <script src="./zepto-1.1.6.js"></script>
         <script>
             document.getElementById('toggleModal').addEventListener('click', () => {
-                // document.getElementsByClassName('modal')[0].classList.add('show');
+                document.getElementsByClassName('modal')[0].classList.add('show');
                 // document.getElementsByTagName('body')[0].classList.add('bodyOver');
                 $('body').css('overflow','hidden')
             })
             document.getElementById('btnInModal').addEventListener('click', () => {
-                // document.getElementsByClassName('modal')[0].classList.remove('show');
+                document.getElementsByClassName('modal')[0].classList.remove('show');
                 // document.getElementsByTagName('body')[0].classList.remove('bodyOver');
                 $('body').css('overflow','scroll')
-
             })
         </script>
     </body>
