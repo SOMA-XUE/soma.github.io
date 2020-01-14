@@ -98,7 +98,12 @@
             <button id='btnInModal'>click test </button>
         </div>
         <script src="./zepto-1.1.6.js"></script>
+        <script src="./js/vconsole.min.js"></script>
         <script>
+
+            // init vConsole
+            var vConsole = new VConsole();
+            console.log('Hello world');
             document.getElementById('toggleModal').addEventListener('click', () => {
                 document.getElementsByClassName('modal')[0].classList.add('show');
                 // document.getElementsByTagName('body')[0].classList.add('bodyOver');
