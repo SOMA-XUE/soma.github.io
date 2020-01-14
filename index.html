@@ -1,33 +1,44 @@
-
 <!docutype html>
-<html>
+    <html>
+
     <head>
         <title>modal-test</title>
         <style type='text/css'>
-            .bodyOver{
+            .bodyOver {
                 overflow-y: hidden;
             }
-            .contentBox{
+
+            .contentBox {
                 text-align: center;
-                width:100vw;
+                width: 100vw;
                 height: 200vh
             }
-            .modal{
+
+            .modal {
                 display: none;
                 position: fixed;
-                top:0;
-                left:0;
+                top: 0;
+                left: 0;
                 width: 100vw;
                 height: 100vh;
                 background: rgba(66, 66, 66, 0.5);
                 text-align: center;
-                padding-top:20%;
+                padding-top: 20%;
             }
-            .show{
+
+            .show {
                 display: block;
-            }      
+            }
+
+            .contentBox::-webkit-scrollbar {
+                /* width: 0;
+                height: 1px */
+                display: none;
+            }
+
         </style>
     </head>
+
     <body>
         <div class='contentBox'>
             <h2>this is content width height 200vh</h2>
@@ -84,13 +95,14 @@
             document.getElementById('toggleModal').addEventListener('click', () => {
                 document.getElementsByClassName('modal')[0].classList.add('show');
                 // document.getElementsByTagName('body')[0].classList.add('bodyOver');
-                $('body').css('overflow','hidden')
+                $('body').css('overflow', 'hidden')
             })
             document.getElementById('btnInModal').addEventListener('click', () => {
                 document.getElementsByClassName('modal')[0].classList.remove('show');
                 // document.getElementsByTagName('body')[0].classList.remove('bodyOver');
-                $('body').css('overflow','scroll')
+                $('body').css('overflow', 'scroll')
             })
         </script>
     </body>
-</html>
+
+    </html>
