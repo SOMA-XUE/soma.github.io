@@ -1,120 +1,27 @@
-<!docutype html>
-    <html>
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <title>modal-test</title>
-        <style type='text/css'>
-            .bodyOver {
-                overflow-y: hidden;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
 
-            .contentBox {
-                text-align: center;
-                width: 100vw;
-                height: 200vh
-            }
+<body>
+    <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg1.jpg" alt class="header" />
 
-            .modal {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(66, 66, 66, 0.5);
-                text-align: center;
-                padding-top: 20%;
-            }
+    <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg2.jpg" alt @click="getGift" />
 
-            .show {
-                display: block;
-            }
+    <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg3.jpg" alt class="footer" />
 
-            .contentBox::-webkit-scrollbar {
-                /* width: 0;
-                height: 1px */
-                /* display: none; */
-                width: 0;
-                height: 0;
-                background-color: transparent;
-            }
+    <script src="./js/vconsole.min.js"></script>
+    <script>
 
-            *::-webkit-scrollbar {
-                display: none;
-                /*隐藏滚动条*/
-            }
-        </style>
-    </head>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script>
+</body>
 
-    <body>
-        <div class='contentBox'>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <p>------------------------------------</p>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <p>+++++++++++++++++++++++++++++++++++++</p>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <h2>this is content width height 200vh</h2>
-            <p>*************************************</p>
-
-
-
-            <Button id='toggleModal'>Modal</Button>
-        </div>
-        <div class='modal'>
-            <button id='btnInModal'>click test </button>
-        </div>
-        <script src="./zepto-1.1.6.js"></script>
-        <script src="./js/vconsole.min.js"></script>
-        <script>
-
-            // init vConsole
-            var vConsole = new VConsole();
-            console.log('Hello world');
-            document.getElementById('toggleModal').addEventListener('click', () => {
-                document.getElementsByClassName('modal')[0].classList.add('show');
-                // document.getElementsByTagName('body')[0].classList.add('bodyOver');
-                $('body').css('overflow', 'hidden')
-            })
-            document.getElementById('btnInModal').addEventListener('click', () => {
-                document.getElementsByClassName('modal')[0].classList.remove('show');
-                // document.getElementsByTagName('body')[0].classList.remove('bodyOver');
-                $('body').css('overflow', 'scroll')
-            })
-        </script>
-    </body>
-
-    </html>
+</html>

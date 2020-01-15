@@ -1,0 +1,120 @@
+<!docutype html>
+    <html>
+
+    <head>
+        <title>modal-test</title>
+        <style type='text/css'>
+            .bodyOver {
+                overflow-y: hidden;
+            }
+
+            .contentBox {
+                text-align: center;
+                width: 100vw;
+                height: 200vh
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(66, 66, 66, 0.5);
+                text-align: center;
+                padding-top: 20%;
+            }
+
+            .show {
+                display: block;
+            }
+
+            .contentBox::-webkit-scrollbar {
+                /* width: 0;
+                height: 1px */
+                /* display: none; */
+                width: 0;
+                height: 0;
+                background-color: transparent;
+            }
+
+            *::-webkit-scrollbar {
+                display: none;
+                /*隐藏滚动条*/
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class='contentBox'>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>------------------------------------</p>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>+++++++++++++++++++++++++++++++++++++</p>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <h2>this is content width height 200vh</h2>
+            <p>*************************************</p>
+
+
+
+            <Button id='toggleModal'>Modal</Button>
+        </div>
+        <div class='modal'>
+            <button id='btnInModal'>click test </button>
+        </div>
+        <script src="./zepto-1.1.6.js"></script>
+        <script src="./js/vconsole.min.js"></script>
+        <script>
+
+            // init vConsole
+            var vConsole = new VConsole();
+            console.log('Hello world');
+            document.getElementById('toggleModal').addEventListener('click', () => {
+                document.getElementsByClassName('modal')[0].classList.add('show');
+                // document.getElementsByTagName('body')[0].classList.add('bodyOver');
+                $('body').css('overflow', 'hidden')
+            })
+            document.getElementById('btnInModal').addEventListener('click', () => {
+                document.getElementsByClassName('modal')[0].classList.remove('show');
+                // document.getElementsByTagName('body')[0].classList.remove('bodyOver');
+                $('body').css('overflow', 'scroll')
+            })
+        </script>
+    </body>
+
+    </html>
