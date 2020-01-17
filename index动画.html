@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+            transition: all 1.5s linear 0s;
+
+        }
+
+        .father {
+            height: 700px;
+            border: 1px solid black;
+            background: white;
+            position: relative;
+
+        }
+
+        .son {
+            background: blue;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+
+
+        }
+
+        .ani {
+            /* transform: translateX(20px); */
+            animation: myfirst 5s;
+            -moz-animation: myfirst 5s;
+            /* Firefox */
+            -webkit-animation: myfirst 5s;
+            /* Safari and Chrome */
+            -o-animation: myfirst 5s;
+            /* Opera */
+        }
+
+        @keyframes myfirst {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        }
+
+        @-moz-keyframes myfirst
+
+        /* Firefox */
+            {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        }
+
+        @-webkit-keyframes myfirst
+
+        /* Safari and Chrome */
+            {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        }
+
+        @-o-keyframes myfirst
+
+        /* Opera */
+            {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+    <button type="button" class="add">add</button>
+    <button type="button" class="minus">minus</button>
+
+
+    <div class="my"></div>
+
+    <div class="father">
+        <div class="son"></div>
+
+    </div>
+
+    <script src="./zepto-1.1.6.js"></script>
+    <script>
+        Zepto(function ($) {
+            $('.add').on('click', () => {
+                // $('.my').removeClass('ani')
+
+                // $('.my').addClass('ani')
+                $('.my').css('transform', 'translateX(20px)');
+
+            })
+
+            $('.minus').on('click', () => {
+                // $('.my').removeClass('ani')
+
+                // $('.my').addClass('ani')
+                $('.my').css('transform', 'translateX(-20px)');
+
+            })
+
+            $('.son').on('click', () => {
+                // $('.my').removeClass('ani')
+
+                // $('.my').addClass('ani')
+                $('.son').css('left', '20px');
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>

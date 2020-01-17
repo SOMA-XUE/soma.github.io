@@ -1,0 +1,131 @@
+img {
+  width: 100%;
+  display: block;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  z-index: 999;
+  font-size: 44px;
+  color: white;
+  text-align: center;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.modal .pickRole {
+  width: 90%;
+  /* 878/50 */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal .pickRole .pickRoleMain {
+  width: 100%;
+  background-color: #152f5f;
+  padding: 36px 0;
+}
+.modal .pickRole .pickRoleMain .pickRoleMainItem {
+  position: relative;
+}
+.modal .pickRole .pickRoleMain .pickRoleMainItem .selectTitle {
+  width: 0.5rem;
+  height: 0.37rem;
+  position: absolute;
+  z-index: 99;
+  top: 50%;
+  right: 15%;
+  transform: translate(0, -50%);
+}
+.modal .pickRole .closeModal {
+  width: 13%;
+  margin: 107px auto;
+}
+.modal .pickRole select,
+.modal .pickRole span {
+  display: block;
+  width: 81%;
+  height: 60px;
+  line-height: 60px;
+  margin: 24px /* 20/50 */ auto;
+  font-weight: 500;
+  font-size: 42px;
+  text-align: center;
+  border: 3px solid #2e489a;
+  border-radius: 12px;
+}
+.modal .pickRole select {
+  text-align: center;
+  text-align-last: center;
+  background-color: #091554;
+  color: white;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.modal .pickRole .pickRoleSure {
+  background-color: #bb2927;
+  margin-top: 32px;
+}
+body {
+  position: relative;
+}
+.cloudGameBook {
+  -webkit-user-select: text !important;
+  background-color: #fff;
+  text-align: center;
+}
+img {
+  width: 100%;
+  vertical-align: middle;
+}
+.phoneNumDiv {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+.phoneNumImgTit {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+.phoneNumTitle {
+  font-size: 1.44rem;
+  line-height: 1.44rem;
+}
+.phoneNum {
+  display: block;
+  width: 72%;
+  height: 2.88rem;
+  margin: 0 auto;
+  margin-top: 2.4rem;
+  margin-bottom: 1.6rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+input {
+  border: none;
+  outline: none;
+}
+input::-webkit-input-placeholder {
+  color: rgba(204, 204, 204, 0.9);
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgba(204, 204, 204, 0.9);
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(204, 204, 204, 0.9);
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(204, 204, 204, 0.9);
+}

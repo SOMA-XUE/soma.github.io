@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./css/testSelect.css">
     <style>
         img {
-            vertical-align: top;
+            /* vertical-align: top; */
             width: 100%;
         }
     </style>
@@ -17,16 +20,74 @@
 <body>
     <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg1.jpg" alt class="header" />
 
-    <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg2.jpg" alt @click="getGift" />
+    <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg2.jpg" alt @click="getGift" class="btn" />
 
     <img src="//gskd.sdoprofile.com/daoyu/XZH5/bloodWelfare_bg3.jpg" alt class="footer" />
 
+
+    <div class="modal">
+        <div class="pickRole">
+            <div class="pickRoleMain">
+                <div class="pickRoleMainItem">
+
+                    <select id="server">
+                        <option value="-1" disabled hidden class="selectTitle">请选择区</option>
+                        <option value="1" class="selectTitle">1区</option>
+                        <option value="2" class="selectTitle">2区</option>
+
+                        
+                    </select>
+                    <img src="//gskd.sdoprofile.com/daoyu/XZ/icon_arrow_blue.png" alt="" class="selectTitle">
+                </div>
+                <div class="pickRoleMainItem">
+                    <select id="role">
+                        <option value="-1" disabled hidden>请选择角色</option>
+                        <option value="1">角色1</option>
+                        <option value="2">角色2</option>
+
+                    </select>
+                    <img src="//gskd.sdoprofile.com/daoyu/XZ/icon_arrow_blue.png" alt="" class="selectTitle">
+
+                </div>
+
+                <span class="pickRoleSure">确&nbsp;&nbsp;&nbsp;&nbsp;认</span>
+            </div>
+
+            <img src="//gskd.sdoprofile.com/daoyu/h5/closeBtn.png" alt="" class="closeModal" />
+        </div>
+    </div>
+
     <script src="./js/vconsole.min.js"></script>
+    <script src="./zepto-1.1.6.js"></script>
     <script>
 
         // init vConsole
         var vConsole = new VConsole();
         console.log('Hello world');
+        Zepto(function ($) {
+            $('.btn').on('click', () => {
+                $('.modal').css('display','block')
+            })
+
+            $('.closeModal').on('click', () => {
+                $('.modal').css('display','none')
+            })
+
+            $('.pickRoleSure').on('click', () => {
+                $('.modal').css('display','none')
+            })
+
+
+            //select输入框弹起软键盘的解决方案。
+    $("select").focus(function () {
+      document.body.scrollTop = document.body.scrollHeight;
+      //console.log(document.body.scrollTop);
+    }).blur(function () {
+      document.body.scrollTop = bfscrolltop;
+      window.scrollTo(0, 0);
+      //console.log(document.body.scrollTop);
+    });
+        })
     </script>
 </body>
 
