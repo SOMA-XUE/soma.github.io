@@ -35,7 +35,7 @@
                         <option value="1" class="selectTitle">1区</option>
                         <option value="2" class="selectTitle">2区</option>
 
-                        
+
                     </select>
                     <img src="//gskd.sdoprofile.com/daoyu/XZ/icon_arrow_blue.png" alt="" class="selectTitle">
                 </div>
@@ -66,27 +66,28 @@
         console.log('Hello world');
         Zepto(function ($) {
             $('.btn').on('click', () => {
-                $('.modal').css('display','block')
+                $('.modal').css('display', 'block')
             })
 
             $('.closeModal').on('click', () => {
-                $('.modal').css('display','none')
+                $('.modal').css('display', 'none')
             })
 
             $('.pickRoleSure').on('click', () => {
-                $('.modal').css('display','none')
+                $('.modal').css('display', 'none')
             })
 
 
             //select输入框弹起软键盘的解决方案。
-    $("select").focus(function () {
-      document.body.scrollTop = document.body.scrollHeight;
-      //console.log(document.body.scrollTop);
-    }).blur(function () {
-      document.body.scrollTop = bfscrolltop;
-      window.scrollTo(0, 0);
-      //console.log(document.body.scrollTop);
-    });
+            var bfscrolltop = document.body.scrollTop;
+            $("select").focus(function () {
+                document.body.scrollTop = document.body.scrollHeight;
+                //console.log(document.body.scrollTop);
+            }).blur(function () {
+                document.body.scrollTop = bfscrolltop;
+                window.scrollTo(0, 0);
+                //console.log(document.body.scrollTop);
+            });
         })
     </script>
 </body>
