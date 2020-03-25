@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="test">click me</button>
+
+    <script>
+        let btn = document.querySelector('.test')
+        btn.addEventListener('click', () => {
+            let myUrl = window.open();
+            console.log('myurl', myUrl)
+            setTimeout(()=> {
+                myUrl.location = 'https://www.baidu.com';
+            },1000)
+            setTimeout(()=> {
+                myUrl.close();
+            },3000)
+        })
+
+        // let myUrl = window.open('file:///E:/My-Project/soma.github.io/index.html', '_blank');
+
+
+    </script>
+</body>
+
+</html>

@@ -30,81 +30,129 @@
 
     <script>
 
-        const attended_activity_list = ['1', '2','4']
+            const attended_activity_list = ['1', '2',,'4'] // '3'
 
-        const giftList = [
-            {
-                title: 1,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_1.png",
-                activity_id: '1',
-                attended: false,
-            },
-            {
-                title: 30,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_30.png",
-                activity_id: '2',
-                attended: false,
-            },
-            {
-                title: 50,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_50.png",
-                activity_id: '3',
-                attended: false,
-            },
-            {
-                title: 70,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_70.png"
-            },
-            {
-                title: 90,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_90.png"
-            },
-            {
-                title: 100,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_100.png"
-            },
-            {
-                title: 110,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_110.png"
-            },
-            {
-                title: 120,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_120.png"
-            },
-            {
-                title: 130,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_130.png"
-            },
-            {
-                title: 140,
-                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_140.png"
-            }
-        ];
-
-        attended_activity_list.forEach(item => {
-            giftList.forEach(v => {
-                if (item === v.activity_id) {
-                    return v.attended = true;
+            const giftList = [
+                {
+                    title: 1,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_1.png",
+                    activity_id: '1',
+                    attended: false,
+                },
+                {
+                    title: 30,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_30.png",
+                    activity_id: '2',
+                    attended: false,
+                },
+                {
+                    title: 50,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_50.png",
+                    activity_id: '3',
+                    attended: false,
+                },
+                {
+                    title: 70,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_70.png"
+                },
+                {
+                    title: 90,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_90.png"
+                },
+                {
+                    title: 100,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_100.png"
+                },
+                {
+                    title: 110,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_110.png"
+                },
+                {
+                    title: 120,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_120.png"
+                },
+                {
+                    title: 130,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_130.png"
+                },
+                {
+                    title: 140,
+                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_140.png"
                 }
-            })
-        });
+            ];
 
-        console.log('giftList', giftList)
+            attended_activity_list.forEach(item => {
+                giftList.forEach(v => {
+                    if (item === v.activity_id) {
+                        return v.attended = true;
+                    }
+                })
+            });
 
-        // 判断当前参加的活动礼包
-      const targetGift = giftList.find(item => 
-        item.attended === false);
+            // console.log('giftList', giftList)
 
-      if (targetGift.length === 0) {
-        // 所有礼包都已领完
-        // return Toast({
-        //   message: "所有礼包都已领完",
-        //   duration: 1000
+            // 判断当前参加的活动礼包
+          const targetGift = giftList.find(item => 
+            item.attended === false);
+
+          if (targetGift.length == 0) {
+            // 所有礼包都已领完
+            // return Toast({
+            //   message: "所有礼包都已领完",
+            //   duration: 1000
+            // });
+            console.log("所有礼包都已领完")
+            // return;
+          }
+          console.log(targetGift)
+
+        // function createIterator(items) {
+        //     var i = 0;
+        //     return {
+        //         next: function () {
+        //             var done = (i >= items.length);
+        //             var value = !done ? items[i++] : undefined;
+        //             return {
+        //                 done: done,
+        //                 value: value
+        //             }
+        //         }
+        //     }
+        // }
+
+        // var iterator = createIterator([1, 2, 3]);
+        // console.log(iterator.next()) //{ done: false, value: 1 }
+        // console.log(iterator.next()) //{ done: false, value: 2 }
+        // console.log(iterator.next()) //{ done: false, value: 3 }
+        // console.log(iterator.next()) //{ done: true, value: undefined }
+        // console.log(iterator.next()) //{ done: true, value: undefined }
+
+
+        // function run(taskDef) {
+        //     // 创建一个无使用限制的迭代器
+        //     let task = taskDef();
+        //     // 开始执行任务
+        //     let result = task.next();
+        //     //循环调用next()的函数
+        //     function step() {
+        //         // 如果任务未完成,则继续执行
+        //         if (!result.done) {
+        //             result = task.next();
+        //             step();
+        //         }
+        //     }
+        //     //开始迭代执行
+        //     step();
+        // }
+        // // 执行
+        // run(function* () {
+        //     console.log(1);
+        //     yield;
+        //     console.log(2);
+        //     yield;
+        //     console.log(3)
         // });
-        console.log("所有礼包都已领完")
-        // return;
-      }
-      console.log(targetGift)
+
     </script>
 </body>
 

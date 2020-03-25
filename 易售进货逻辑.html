@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>进货93</h3>
+    <input type="text" placeholder="输入返点" class="returnValue">
+    <!-- <input type="text" placeholder="输入折扣" class="discount" value=""> -->
+    <button class="btn">开始计算</button>
+
+    <script>
+
+        const btn = document.querySelector('.btn')
+        const discount = 0.92;
+        const value = 93;
+        btn.addEventListener('click', () => {
+            const returnValue = document.querySelector('.returnValue').value;
+            // console.log(returnValue)
+            if (returnValue < 1) {
+                console.log('本次无最大限制')
+            } else {
+                let maxStock = Math.floor(returnValue * discount / 0.05);
+                countInfo = `本次最大进货${maxStock}张`;
+                console.log('初步计算：',returnValue * discount / 0.05,'向下取整',countInfo)
+
+            }
+            const maxCostReturnValue = Math.floor(value / discount * 0.05 * 100) / 100;
+            let actualCostReturnValue = 0;
+
+
+            if (returnValue <= maxCostReturnValue) {
+                    actualCostReturnValue = returnValue;
+                    console.log('可用返点<=规则最大可用返点')
+            } else {
+                    actualCostReturnValue = maxCostReturnValue;
+                    console.log('可用返点>规则最大可用返点')
+            }
+            console.log('规则最大可用返点',maxCostReturnValue)
+            console.log('实际使用返点',actualCostReturnValue)
+            // toFixed， toFixed() 方法可把 Number 四舍五入为指定小数位数的数字
+            let actualPay = +((value - actualCostReturnValue) * discount).toFixed(2);
+            console.log('实际支付',actualPay)
+
+
+
+        })
+    </script>
+</body>
+</html>
