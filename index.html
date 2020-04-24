@@ -9,6 +9,14 @@
     <style>
         p {
             font-size: 16px;
+            color: red;
+        }
+
+        html {
+            overflow-y: scroll;
+            /* filter: proid:DXImageTransform.Microsoft.BasicImage(grayscale=1); */
+            filter: grayscale(100%);
+            -wekit-filter: grayscale(100%);
         }
     </style>
 </head>
@@ -30,72 +38,72 @@
 
     <script>
 
-            const attended_activity_list = ['1', '2',,'4'] // '3'
+        const attended_activity_list = ['1', '2', , '4'] // '3'
 
-            const giftList = [
-                {
-                    title: 1,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_1.png",
-                    activity_id: '1',
-                    attended: false,
-                },
-                {
-                    title: 30,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_30.png",
-                    activity_id: '2',
-                    attended: false,
-                },
-                {
-                    title: 50,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_50.png",
-                    activity_id: '3',
-                    attended: false,
-                },
-                {
-                    title: 70,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_70.png"
-                },
-                {
-                    title: 90,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_90.png"
-                },
-                {
-                    title: 100,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_100.png"
-                },
-                {
-                    title: 110,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_110.png"
-                },
-                {
-                    title: 120,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_120.png"
-                },
-                {
-                    title: 130,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_130.png"
-                },
-                {
-                    title: 140,
-                    titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_140.png"
+        const giftList = [
+            {
+                title: 1,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_1.png",
+                activity_id: '1',
+                attended: false,
+            },
+            {
+                title: 30,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_30.png",
+                activity_id: '2',
+                attended: false,
+            },
+            {
+                title: 50,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_50.png",
+                activity_id: '3',
+                attended: false,
+            },
+            {
+                title: 70,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_70.png"
+            },
+            {
+                title: 90,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_90.png"
+            },
+            {
+                title: 100,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_100.png"
+            },
+            {
+                title: 110,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_110.png"
+            },
+            {
+                title: 120,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_120.png"
+            },
+            {
+                title: 130,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_130.png"
+            },
+            {
+                title: 140,
+                titleImg: "//gskd.sdoprofile.com/daoyu/jzmf/welfare/fl_lb_140.png"
+            }
+        ];
+
+        attended_activity_list.forEach(item => {
+            giftList.forEach(v => {
+                if (item === v.activity_id) {
+                    return v.attended = true;
                 }
-            ];
+            })
+        });
 
-            attended_activity_list.forEach(item => {
-                giftList.forEach(v => {
-                    if (item === v.activity_id) {
-                        return v.attended = true;
-                    }
-                })
-            });
+        // console.log('giftList', giftList)
 
-            // console.log('giftList', giftList)
-
-            // 判断当前参加的活动礼包
-          const targetGift = giftList.find(item => 
+        // 判断当前参加的活动礼包
+        const targetGift = giftList.find(item =>
             item.attended === false);
 
-          if (targetGift.length == 0) {
+        if (targetGift.length == 0) {
             // 所有礼包都已领完
             // return Toast({
             //   message: "所有礼包都已领完",
@@ -103,8 +111,8 @@
             // });
             console.log("所有礼包都已领完")
             // return;
-          }
-          console.log(targetGift)
+        }
+        console.log(targetGift)
 
         // function createIterator(items) {
         //     var i = 0;

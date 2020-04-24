@@ -18,7 +18,9 @@
         const discount = 0.92;
         const value = 93;
         btn.addEventListener('click', () => {
-            const returnValue = document.querySelector('.returnValue').value;
+            let returnValue = document.querySelector('.returnValue').value;
+            returnValue = returnValue < 1 ? 0 : returnValue;
+
             // console.log(returnValue)
             if (returnValue < 1) {
                 console.log('本次无最大限制')
