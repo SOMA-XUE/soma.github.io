@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <button></button> -->
+    <div id="mi"></div>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            class Widget {
+                constructor(width, height) {
+                    this.width = width || 50;
+                    this.height = height || 50;
+                    this.$elem = null;
+                }
+                render($where) {
+                    if (this.$elem) {
+                        this.$elem.css({
+                            width: this.width + "px",
+                            height: this.height + "px"
+                        }).appendTo($where);
+                    }
+                }
+            }
+
+            class Button extends Widget {
+                constructor(width, height, label) {
+                    super(width, height);
+                    this.label = label || "Default";
+                    this.$elem = $("<button>").text(this.label).addClass('myBtn');
+                }
+                render(where) {
+                    // super($where);
+                    // $(`${where}`).html(`<button>${this.label}</button>`);
+                    $(`${where}`).html(this.$elem)
+
+                    this.$elem.click(this.onClick.bind(this));
+                }
+                onClick(evt) {
+                    console.log("Button '" + this.label + "' clicked!");
+                }
+            }
+
+            let xx = new Button(400,700,'hello')
+            xx.render('#mi')
+            // xx.onClick();
+        })
+    </script>
+
+
+</body>
+
+</html>
