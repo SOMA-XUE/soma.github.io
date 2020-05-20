@@ -1,0 +1,35 @@
+.jkSelectArea {
+  height: 8.36rem;
+  padding: 0.8rem 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+.jkSelectArea .select {
+  font-size: 0.48rem;
+  text-align: left;
+  padding-left: 0.48rem;
+  box-sizing: border-box;
+}
+.jkSelectArea .select .jkSelectAreaUp {
+  color: #000000;
+  display: block;
+  line-height: 0.48rem;
+  padding-top: 0.7rem;
+  font-weight: 500;
+}
+.jkSelectArea .select .jkSelectAreaUp .jkSelectAreaMoney {
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+.jkSelectArea .select .jkSelectAreaDown {
+  display: block;
+  color: #aaa !important;
+  line-height: 1.2rem;
+}
+.jkArea .jkSelectArea .selected .jkSelectAreaUp {
+  color: #fc2a53;
+}
