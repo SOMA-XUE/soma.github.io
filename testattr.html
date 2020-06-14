@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div proid="23" class="xx">   休息休息吧   </div>
+    <div proid="23" class="xx2">休息休息吧</div>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            String.prototype.trim = function () {
+                return this.replace(/(^\s*)|(\s*$)/g, '');
+            }
+            // var temp = $('.xx').attr('proid')
+            var temp = $('.xx').text().trim();
+            var temp2 = $('.xx2').text().trim();
+
+
+            console.log(temp, typeof temp)
+            console.log(temp2, typeof temp2)
+
+        })
+    </script>
+</body>
+
+</html>

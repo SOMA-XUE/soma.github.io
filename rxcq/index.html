@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盛趣游戏充值</title>
+    <link rel="stylesheet" href="./lib/base.css?_v=0.1">
+    <link rel="stylesheet" href="./lib/jk.css?_v=0.4">
+    <link rel="stylesheet" href="./lib/css/rxcq.css?_v=0.1">
+    <link rel="stylesheet" href="./lib/iosSelect/iosSelect.css">
+    <script src="./lib/iosSelect/iosSelect.js"></script>
+
+</head>
+
+<body>
+    <script>
+        function IsPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+
+        if (IsPC()) {
+            // window.location.href = '/tips';
+        } else {
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger" || (ua.match(/ qq/i) == ' qq')) {
+                window.location.href = '/wxTips';
+            }
+        }
+    </script>
+    <script src="./lib/zepto-1.1.6.js?_v=0.1"></script>
+    <script src="./lib/static_js_lib_imglog.js?_v=0.2"></script>
+    <script src="./lib/lib2.js?_v=0.2"></script>
+    <script>
+        imgLog_Button({
+            web_buttonid: 'load',
+            user_agent: navigator.userAgent,
+            web_pageid: 'chuanQiHuaiJiu',
+        });
+        function windowResize() {
+            var width = window.innerWidth;
+            width = Math.max(width, 320)
+            width = Math.min(width, 750)
+            document.querySelector('html').style.fontSize = width / 15 + 'px';
+        }
+
+        window.addEventListener('resize', windowResize);
+
+        Zepto(function ($) {
+            window.dispatchEvent(new Event('resize'));
+
+            var showToast = function (msg, showTime = 3000) {
+                $('.toastContent').text(msg);
+                $('.toast').css('display', 'block');
+                setTimeout(function () {
+                    $('.toast').css('display', 'none');
+                    $('.errorBorder').removeClass('errorBorder');
+                }, showTime)
+            }
+
+            // 实例化iosSelect组件
+            var data = [{ 'id': '10001', 'value': '演示数据1' }, { 'id': '10002', 'value': '演示数据2' }];
+            var showDom = document.querySelector('.selectGameArea');// 绑定一个触发元素
+            var valDom = document.querySelector('.idName');  // 绑定一个存储结果的元素
+            showDom.addEventListener('click', function () {  // 添加监听事件
+                var val = showDom.dataset['id'];             // 获取元素的data-id属性值
+                var title = showDom.dataset['value'];        // 获取元素的data-value属性值
+                // 实例化组件
+                var example = new IosSelect(1,               // 第一个参数为级联层级，演示为1
+                    [data],                             // 演示数据
+                    {
+                        container: '.container',             // 容器class
+                        title: '演示标题',                    // 标题
+                        itemHeight: 50,                      // 每个元素的高度
+                        itemShowCount: 3,                    // 每一列显示元素个数，超出将隐藏
+                        oneLevelId: val,                     // 第一级默认值
+                        callback: function (selectOneObj) {  // 用户确认选择后的回调函数
+                            valDom.value = selectOneObj.id;
+                            showDom.innerHTML = selectOneObj.value;
+                            showDom.dataset['id'] = selectOneObj.id;
+                            showDom.dataset['value'] = selectOneObj.value;
+                        }
+                    });
+            });
+            var checkInfo = function () {
+                var idNo = $('.idNo').val().trim();
+                // var idName = $.trim($('.idName').val());
+                var donationAmount = $('.jkSelectArea .selected').attr('value');
+
+                if (!idNo) {
+                    showToast('请输入您的账号');
+                    $('.idNoInfo').addClass('errorBorder');
+                    return false;
+                }
+
+                // var idNoTmp = parseInt(idNo);
+                // if (!(idNoTmp >= 1 && idNoTmp <= 40999) || !(/^[0-9]{6}$/.test(idNo))) {
+                //     showToast('您输入的账号有误，请重新输入');
+                //     $('.idNoInfo').addClass('errorBorder');
+                //     return false;
+                // }
+
+
+                // if (!(/^[A-Za-z0-9.\s\u4e00-\u9fa5]{1,50}$/.test(idName))) {
+                //     showToast('您输入的姓名有误，请重新输入');
+                //     $('.idNameInfo').addClass('errorBorder');
+                //     return false;
+                // }
+
+                if (!donationAmount) {
+                    showToast('请输入金额');
+                    return false;
+                }
+
+                return true;
+            }
+
+            $('.select').on('click', function () {
+                $('.select').removeClass('selected');
+                $(this).addClass("selected");
+            });
+
+            var submitFunc = function () {
+                var idNo = $('.idNo').val();
+                var idName = $.trim($('.idName').val());
+                var isAnonymously = $('input[name="anonymous"]:checked').val();
+                var donationAmount = $('.jkSelectArea .selected').find('input').length ? $('.jkSelectArea .selected').find('input').val() : $('.jkSelectArea .selected').attr('value');
+
+                var parmas = {
+                    traceId: traceId(),
+                    employNo: idNo,
+                    employName: idName,
+                    isAnonymously: isAnonymously,
+                    donationAmount: donationAmount,
+                }
+
+                imgLog_Button({
+                    api_url: "order",
+                    web_buttonid: 'order',
+                    user_agent: navigator.userAgent,
+                    web_pageid: 'shengqugamejk',
+                });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/donation/api/order',
+                    data: parmas,
+                    dataType: 'json',
+                    timeout: 20000,
+                    success: function (res) {
+                        if (res.return_code === 0) {
+                            window.location.href = res.data ? res.data.cashierUrl : '';
+                        } else {
+                            tipsModal('提示', res.return_message);
+                        }
+                    },
+                    error: function () {
+                        tipsModal('提示', '对不起，目前系统繁忙，请您稍后重试');
+                    }
+                })
+            }
+
+            $('.modalBackBtn').on('click', function () {
+                $('.modal').hide();
+                $('.showIdNo').html('');
+                $('.showIdName').html('');
+            });
+
+            $('.modalOkBtn').on('click', function () {
+                submitFunc();
+            });
+
+            $('.submit').on('click', function () {
+                if (!checkInfo()) {
+                    return;
+                }
+
+                var idNo = $('.idNo').val();
+                var idName = $.trim($('.idName').val());
+                var isAnonymously = $('input[name="anonymous"]:checked').val();
+                var donationAmount = $('.jkSelectArea .selected').find('input').length ? $('.jkSelectArea .selected').find('input').val() : $('.jkSelectArea .selected').attr('value');
+
+                var parmas = {
+                    traceId: traceId(),
+                    employNo: idNo,
+                    employName: idName,
+                    isAnonymously: isAnonymously,
+                    donationAmount: donationAmount,
+                }
+                $('.showIdNo').html(idNo);
+                $('.showIdName').html(donationAmount);
+                $('.modal').show();
+            })
+
+            // 关闭对话框modal
+            $('.modalBackBtn').on('click', function () {
+                $('.modal').css('display', 'none');
+            })
+        })
+    </script>
+
+    <div class="container"></div>
+
+    <!-- 错误提示 -->
+    <div class="toast">
+        <span></span>
+        <p class="toastContent"></p><span></span>
+    </div>
+
+    <!-- 确认框 -->
+    <div class="modal">
+        <div class="modalMain">
+            <div class="modalMainTitle">
+                <p>请再次检查充值信息：</p>
+            </div>
+
+            <div class="modalMainBody">
+                <p>账号：<span class="showIdNo"></span></p>
+                <p>金额：<span class="showIdName"></span></p>
+            </div>
+
+            <div class="modalMainFooter">
+                <span class="modalBtn modalBackBtn">返回</span>
+                <span class="modalBtn modalOkBtn">确定</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jkBody">
+        <img src="" class="titleBg" alt="">
+
+        <div class="info normal idNoInfo">
+            <div class="infoTitle">充值账号</div>
+            <input type="text" class="infoContent idNo" maxlength="30" placeholder="请输入充值账号">
+        </div>
+
+        <div class="info normal idNameInfo">
+            <div class="infoTitle">游戏区服</div>
+            <input class="infoContent idName" type="hidden">
+            <span class="selectGameArea">请选择游戏区服</span>
+        </div>
+        <div style="clear: both;"></div>
+
+        <div class="jkArea normal">
+            <div class="jkAreaTitle">
+                选择充值金额
+            </div>
+            <div class="jkSelectArea">
+                <div class="select selected" value='34.8'>
+                    <span class="jkSelectAreaUp">
+                        <span class="jkSelectAreaMoney">34.8</span>
+                        元
+                    </span>
+                    <span class="jkSelectAreaDown">获得30小时时间</span>
+                </div>
+                <div class="select" value='58'>
+                    <span class="jkSelectAreaUp">
+                        <span class="jkSelectAreaMoney">
+                            58
+                        </span>
+                        元
+                    </span>
+                    <span class="jkSelectAreaDown">获得50小时时间</span>
+                </div>
+                <div class="select" value='87'>
+                    <span class="jkSelectAreaUp">
+                        <span class="jkSelectAreaMoney">
+                            87
+                        </span>
+                        元
+                    </span>
+                    <span class="jkSelectAreaDown">获得75小时时间</span>
+                </div>
+                <div class="select" value='116'>
+                    <span class="jkSelectAreaUp">
+                        <span class="jkSelectAreaMoney">
+                            116
+                        </span>
+                        元
+                    </span>
+                    <span class="jkSelectAreaDown">获得100小时时间</span>
+                </div>
+
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="submit normal">
+            充值
+        </div>
+    </div>
+
+</body>
+
+</html>
