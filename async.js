@@ -33,4 +33,10 @@ async function test() {
     console.log(hh)
 }
 
-test()
+// function test2 () {
+//     let hh = readPath('./test.txt')
+//     console.log(hh)
+// }
+
+test2();
+// test()

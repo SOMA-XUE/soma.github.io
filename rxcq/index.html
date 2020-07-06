@@ -6,13 +6,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>盛趣游戏充值</title>
+    <title>热血传奇怀旧版专属充值</title>
     <link rel="stylesheet" href="./lib/base.css?_v=0.1">
-    <link rel="stylesheet" href="./lib/jk.css?_v=0.4">
+    <link rel="stylesheet" href="./lib/jk.css?_v=0.1">
     <link rel="stylesheet" href="./lib/css/rxcq.css?_v=0.1">
     <link rel="stylesheet" href="./lib/iosSelect/iosSelect.css">
     <script src="./lib/iosSelect/iosSelect.js"></script>
-
+    <!-- <script src="./lib/vconsole.min.js"></script> -->
 </head>
 
 <body>
@@ -32,23 +32,36 @@
             return flag;
         }
 
-        if (IsPC()) {
-            // window.location.href = '/tips';
-        } else {
-            var ua = navigator.userAgent.toLowerCase();
-            if (ua.match(/MicroMessenger/i) == "micromessenger" || (ua.match(/ qq/i) == ' qq')) {
-                window.location.href = '/wxTips';
-            }
-        }
+        // if (IsPC()) {
+        //     window.location.href = '/tips';
+        // } else {
+        //     var ua = navigator.userAgent.toLowerCase();
+        //     if (ua.match(/MicroMessenger/i) == "micromessenger" || (ua.match(/ qq/i) == ' qq')) {
+        //         window.location.href = '/wxTips';
+        //     }
+        // }
     </script>
     <script src="./lib/zepto-1.1.6.js?_v=0.1"></script>
-    <script src="./lib/static_js_lib_imglog.js?_v=0.2"></script>
-    <script src="./lib/lib2.js?_v=0.2"></script>
+    <script src="./lib/static_js_lib_imglog.js?_v=0.1"></script>
+    <script src="./lib/lib2.js?_v=0.1"></script>
     <script>
         imgLog_Button({
             web_buttonid: 'load',
             user_agent: navigator.userAgent,
-            web_pageid: 'chuanQiHuaiJiu',
+            web_pageid: 'rxcqhjb',
+        });
+
+        var accountList = [];
+
+        var appId = '1';
+        var areaName = '传奇二区';
+        var areaId = '2';
+        var groupList = [];
+
+        imgLog_Button({
+            api_url: "querygrouplist",
+            user_agent: navigator.userAgent,
+            web_pageid: 'rxcqhjb',
         });
         function windowResize() {
             var width = window.innerWidth;
@@ -58,6 +71,7 @@
         }
 
         window.addEventListener('resize', windowResize);
+        // var vConsole = new VConsole();
 
         Zepto(function ($) {
             window.dispatchEvent(new Event('resize'));
@@ -72,53 +86,257 @@
             }
 
             // 实例化iosSelect组件
-            var data = [{ 'id': '10001', 'value': '演示数据1' }, { 'id': '10002', 'value': '演示数据2' }];
-            var showDom = document.querySelector('.selectGameArea');// 绑定一个触发元素
-            var valDom = document.querySelector('.idName');  // 绑定一个存储结果的元素
-            showDom.addEventListener('click', function () {  // 添加监听事件
-                var val = showDom.dataset['id'];             // 获取元素的data-id属性值
-                var title = showDom.dataset['value'];        // 获取元素的data-value属性值
-                // 实例化组件
-                var example = new IosSelect(1,               // 第一个参数为级联层级，演示为1
-                    [data],                             // 演示数据
-                    {
-                        container: '.container',             // 容器class
-                        title: '演示标题',                    // 标题
-                        itemHeight: 50,                      // 每个元素的高度
-                        itemShowCount: 3,                    // 每一列显示元素个数，超出将隐藏
-                        oneLevelId: val,                     // 第一级默认值
-                        callback: function (selectOneObj) {  // 用户确认选择后的回调函数
-                            valDom.value = selectOneObj.id;
-                            showDom.innerHTML = selectOneObj.value;
-                            showDom.dataset['id'] = selectOneObj.id;
-                            showDom.dataset['value'] = selectOneObj.value;
+            function InitGroupList() {
+                // groupList = groupList.map(item => {
+                //     return {
+                //         id: item.groupId,
+                //         value: item.groupName,
+                //         parentId: item.parentId,
+                //     }
+                // })
+                var showDom = document.querySelector('.selectGameArea');// 绑定一个触发元素
+                var valDom = document.querySelector('.idName');  // 绑定一个存储结果的元素
+
+
+                var oneLevelId = $(showDom).attr('areaId');
+                var twoLevelId = $(showDom).attr('groupId');
+                showDom.addEventListener('click', function () {  // 添加监听事件
+                    var val = showDom.dataset['id'];             // 获取元素的data-id属性值
+                    var title = showDom.dataset['value'];        // 获取元素的data-value属性值3
+                    // 实例化组件
+                    var example = new IosSelect(2,               // 第一个参数为级联层级，演示为1
+                        // [[{ 'id': '2', 'value': '传世二区','parentId': '0' },{ 'id': '3', 'value': '传世三区','parentId': '0' }], groupList],                             // 演示数据
+                        [areaList, groupList],                             // 演示数据
+                        {
+                            container: '.container',             // 容器class
+                            title: '选择游戏区服',                    // 标题
+                            relation: [1, 1],
+                            itemHeight: 80,                      // 每个元素的高度
+                            itemShowCount: 3,                    // 每一列显示元素个数，超出将隐藏
+                            oneLevelId: oneLevelId,                     // 第一级默认值
+                            twoLevelId: twoLevelId,
+                            callback: function (selectOneObj, selectTwoObj) {  // 用户确认选择后的回调函数
+                                console.log(selectOneObj, selectTwoObj)
+                                valDom.value = selectTwoObj.id;
+
+                                showDom.innerHTML = selectOneObj.value + ' - ' + selectTwoObj.value;
+                                showDom.dataset['areaId'] = selectOneObj.id;
+                                // showDom.dataset['value'] = selectTwoObj.value;
+
+                                showDom.dataset['groupId'] = selectTwoObj.id;
+                                // showDom.dataset['value'] = selectTwoObj.value;
+                            }
+                        });
+                });
+            }
+
+
+            function InitAccountList() {
+                if (accountList.length > 0) {
+
+                    accountList = accountList.map(item => {
+                        return {
+                            id: item.snda_id,
+                            value: item.displayname
+                        }
+                    })
+
+                    var showDom2 = document.querySelector('#selectAccount');// 绑定一个触发元素
+                    var valDom2 = document.querySelector('.idNo');  // 绑定一个存储结果的元素
+                    showDom2.addEventListener('click', function () {  // 添加监听事件
+                        var val2 = showDom2.dataset['id'];             // 获取元素的data-id属性值
+                        var title2 = showDom2.dataset['value'];        // 获取元素的data-value属性值3
+                        // 实例化组件
+                        var example2 = new IosSelect(1,               // 第一个参数为级联层级，演示为1
+                            [accountList],                             // 演示数据
+                            {
+                                container: '.container2',             // 容器class
+                                title: '选择充值账号',                // 标题
+                                itemHeight: 80,                      // 每个元素的高度
+                                itemShowCount: 3,                    // 每一列显示元素个数，超出将隐藏
+                                oneLevelId: val2,                     // 第一级默认值
+                                callback: function (selectOneObj) {  // 用户确认选择后的回调函数
+                                    valDom2.value = selectOneObj.id;
+                                    showDom2.innerHTML = selectOneObj.value;
+                                    showDom2.dataset['id'] = selectOneObj.id;
+                                    showDom2.dataset['value'] = selectOneObj.value;
+                                }
+                            });
+                    });
+                }
+            }
+
+            var loginByUserLogin = function (a, b, sessionId) {
+                setTimeout(() => {
+                    $.ajax({
+                        type: "GET",
+                        url: location.protocol + "//www.daoyu8.com/api/userSafe/queryAccountList",
+                        data: {
+                            USERSESSID: sessionId,
+                        },
+                        dataType: 'jsonp',
+                        jsonp: "fn_callback", // cb
+                        timeout: 20000,
+                        success: function (res) {
+                            if (res.return_code === 0) {
+                                accountList = res.data ? res.data.data_list : [];
+                                // console.log('queryAccountList', accountList);
+                                InitAccountList();
+                            } else {
+                                tipsModal('提示', res.return_message);
+                            }
+                        },
+                        error: function () {
+                            tipsModal('提示', '对不起，目前系统繁忙，请您稍后重试');
                         }
                     });
-            });
+                }, 0);
+            };
+
+            if (typeof window.USER !== "undefined") {
+                window.loginByUserLogin = loginByUserLogin;
+                window.USER.login("", "", "loginByUserLogin");
+            } else {
+                // ios
+                function getAccountList(session) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: location.protocol + "//www.daoyu8.com/api/userSafe/queryAccountList",
+                        data: {
+                            USERSESSID: session,
+                        },
+                        dataType: 'jsonp',
+                        jsonp: "fn_callback", // cb
+                        timeout: 20000,
+                        success: function (res) {
+                            if (res.return_code === 0) {
+                                accountList = res.data ? res.data.data_list : [];
+                                InitAccountList();
+                            } else {
+                                tipsModal('提示', '账户查询' + res.return_message);
+                            }
+                        },
+                        error: function (err) {
+                            tipsModal('提示', '对不起，目前系统繁忙，请您稍后重试');
+                        }
+
+                    });
+                }
+
+                function setupWebViewJavascriptBridge(callback) {
+                    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+                    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+                    window.WVJBCallbacks = [callback];
+                    var WVJBIframe = document.createElement('iframe');
+                    WVJBIframe.style.display = 'none';
+                    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+                    document.documentElement.appendChild(WVJBIframe);
+                    setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
+                }
+
+                setupWebViewJavascriptBridge(function (bridge) {
+                    /* Initialize your app here */
+                    window.bridge = bridge;
+
+                    bridge.callHandler("getToken", function (session) {
+                        console.log('session', session);
+                        getAccountList(session);
+                    });
+
+                    setTimeout(function () {
+                        bridge.callHandler("setTitle", '热血传奇怀旧版专属充值');
+                    }, 100)
+                })
+            }
+            // 查询对于区下所有服
+            $.ajax({
+                type: 'GET',
+                url: '/duration/api/querygrouplist',
+                data: {
+                    uniqueId: traceId(),
+                    appId: appId,
+                    areaId: areaId,
+                },
+                dataType: 'json',
+                timeout: 20000,
+                success: function (res) {
+                    if (res.return_code === 0) {
+                        groupList = res.data ? JSON.parse(res.data.groupList) : [];
+                        InitGroupList();
+                    } else {
+                        tipsModal('提示', res.return_message);
+                    }
+                },
+                error: function () {
+                    areaList = function (callback) {
+                        setTimeout(() => {
+                            let data = [
+                                { 'id': '2', 'value': '传世二区', 'parentId': '0' },
+                                { 'id': '3', 'value': '传世三区', 'parentId': '0' }
+                            ]
+                            callback(data);
+                        }, 1000)
+                    }
+
+                    groupList = function (id, callback) {
+                        console.log('queryGroup', id)
+                        setTimeout(() => {
+                            let data = [
+                                {
+                                    groupId: '21',
+                                    groupName: '21',
+                                    parentId: '2',
+                                },
+                                {
+                                    groupId: '22',
+                                    groupName: '22',
+                                    parentId: '2',
+                                },
+
+                                {
+                                    groupId: '31',
+                                    groupName: '31',
+                                    parentId: '3',
+                                },
+                                {
+                                    groupId: '32',
+                                    groupName: '32',
+                                    parentId: '3',
+                                },
+                            ]
+                            data = data.map(item => {
+                                return {
+                                    id: item.groupId,
+                                    value: item.groupName,
+                                    parentId: item.parentId,
+                                }
+                            })
+                            callback(data);
+                        }, 1000)
+                    }
+                    InitGroupList();
+
+                    tipsModal('提示', '对不起，目前系统繁忙，请您稍后重试');
+                }
+            })
+
             var checkInfo = function () {
                 var idNo = $('.idNo').val().trim();
-                // var idName = $.trim($('.idName').val());
+                var idName = $('.idName').val();
                 var donationAmount = $('.jkSelectArea .selected').attr('value');
 
                 if (!idNo) {
-                    showToast('请输入您的账号');
+                    showToast('请选择您的账号');
                     $('.idNoInfo').addClass('errorBorder');
                     return false;
                 }
 
-                // var idNoTmp = parseInt(idNo);
-                // if (!(idNoTmp >= 1 && idNoTmp <= 40999) || !(/^[0-9]{6}$/.test(idNo))) {
-                //     showToast('您输入的账号有误，请重新输入');
-                //     $('.idNoInfo').addClass('errorBorder');
-                //     return false;
-                // }
-
-
-                // if (!(/^[A-Za-z0-9.\s\u4e00-\u9fa5]{1,50}$/.test(idName))) {
-                //     showToast('您输入的姓名有误，请重新输入');
-                //     $('.idNameInfo').addClass('errorBorder');
-                //     return false;
-                // }
+                if (!idName) {
+                    showToast('请选择区服');
+                    $('.idNameInfo').addClass('errorBorder');
+                    return false;
+                }
 
                 if (!donationAmount) {
                     showToast('请输入金额');
@@ -133,30 +351,31 @@
                 $(this).addClass("selected");
             });
 
+            // 二次确认后下单
             var submitFunc = function () {
                 var idNo = $('.idNo').val();
-                var idName = $.trim($('.idName').val());
-                var isAnonymously = $('input[name="anonymous"]:checked').val();
-                var donationAmount = $('.jkSelectArea .selected').find('input').length ? $('.jkSelectArea .selected').find('input').val() : $('.jkSelectArea .selected').attr('value');
+                var groupId = $('.idName').val();
+                var donationAmount = $('.jkSelectArea .selected').attr('value');
 
                 var parmas = {
                     traceId: traceId(),
-                    employNo: idNo,
-                    employName: idName,
-                    isAnonymously: isAnonymously,
-                    donationAmount: donationAmount,
+                    accountId: idNo,
+                    appId: appId,
+                    areaId: areaId,
+                    groupId: groupId,
+                    rechargeAmount: donationAmount,
                 }
 
                 imgLog_Button({
-                    api_url: "order",
-                    web_buttonid: 'order',
+                    api_url: "payorder",
+                    web_buttonid: 'payorder',
                     user_agent: navigator.userAgent,
-                    web_pageid: 'shengqugamejk',
+                    web_pageid: 'rxcqhjb',
                 });
 
                 $.ajax({
                     type: 'GET',
-                    url: '/donation/api/order',
+                    url: '/duration/api/payorder',
                     data: parmas,
                     dataType: 'json',
                     timeout: 20000,
@@ -176,6 +395,7 @@
             $('.modalBackBtn').on('click', function () {
                 $('.modal').hide();
                 $('.showIdNo').html('');
+                $('.showIdGroup').html('');
                 $('.showIdName').html('');
             });
 
@@ -183,24 +403,24 @@
                 submitFunc();
             });
 
+            // “ 充值按钮”,表单检验
             $('.submit').on('click', function () {
                 if (!checkInfo()) {
                     return;
                 }
 
-                var idNo = $('.idNo').val();
-                var idName = $.trim($('.idName').val());
-                var isAnonymously = $('input[name="anonymous"]:checked').val();
-                var donationAmount = $('.jkSelectArea .selected').find('input').length ? $('.jkSelectArea .selected').find('input').val() : $('.jkSelectArea .selected').attr('value');
+                var idNo = $('#selectAccount').attr('data-value');
+                var idName = $('.idName').val();
+                var donationAmount = $('.jkSelectArea .selected .jkSelectAreaMoney').text().trim();
 
                 var parmas = {
                     traceId: traceId(),
                     employNo: idNo,
                     employName: idName,
-                    isAnonymously: isAnonymously,
                     donationAmount: donationAmount,
                 }
                 $('.showIdNo').html(idNo);
+                $('.showIdGroup').html($('.selectGameArea').text());
                 $('.showIdName').html(donationAmount);
                 $('.modal').show();
             })
@@ -213,6 +433,8 @@
     </script>
 
     <div class="container"></div>
+    <div class="container2"></div>
+
 
     <!-- 错误提示 -->
     <div class="toast">
@@ -224,11 +446,12 @@
     <div class="modal">
         <div class="modalMain">
             <div class="modalMainTitle">
-                <p>请再次检查充值信息：</p>
+                <p>请再次检查充值信息</p>
             </div>
 
             <div class="modalMainBody">
                 <p>账号：<span class="showIdNo"></span></p>
+                <p>区服：<span class="showIdGroup"></span></p>
                 <p>金额：<span class="showIdName"></span></p>
             </div>
 
@@ -240,16 +463,19 @@
         </div>
     </div>
 
+
+
     <div class="jkBody">
-        <img src="" class="titleBg" alt="">
+        <img src="logo_92@2x.png" class="titleBg" alt="./logo_92@3x.png">
 
         <div class="info normal idNoInfo">
-            <div class="infoTitle">充值账号</div>
-            <input type="text" class="infoContent idNo" maxlength="30" placeholder="请输入充值账号">
+            <div class="infoTitle">充值账号：</div>
+            <input type="hidden" class="infoContent idNo">
+            <span id="selectAccount">请选择充值账号</span>
         </div>
 
         <div class="info normal idNameInfo">
-            <div class="infoTitle">游戏区服</div>
+            <div class="infoTitle">游戏区服：</div>
             <input class="infoContent idName" type="hidden">
             <span class="selectGameArea">请选择游戏区服</span>
         </div>
@@ -260,37 +486,39 @@
                 选择充值金额
             </div>
             <div class="jkSelectArea">
-                <div class="select selected" value='34.8'>
+                <div class="select selected" value='30.00'>
+                    <span class="discount"></span>
                     <span class="jkSelectAreaUp">
-                        <span class="jkSelectAreaMoney">34.8</span>
+                        <span class="jkSelectAreaMoney">29.40</span>
                         元
+                        <span class="origin">30.00</span>
                     </span>
                     <span class="jkSelectAreaDown">获得30小时时间</span>
                 </div>
-                <div class="select" value='58'>
+                <!-- <div class="select" value='58.00'>
+                    <span class="discount"></span>
                     <span class="jkSelectAreaUp">
-                        <span class="jkSelectAreaMoney">
-                            58
-                        </span>
+                        <span class="jkSelectAreaMoney">56.84</span>
                         元
+                        <span class="origin">58.00</span>
                     </span>
                     <span class="jkSelectAreaDown">获得50小时时间</span>
                 </div>
-                <div class="select" value='87'>
+                <div class="select" value='87.00'>
+                    <span class="discount"></span>
                     <span class="jkSelectAreaUp">
-                        <span class="jkSelectAreaMoney">
-                            87
-                        </span>
+                        <span class="jkSelectAreaMoney">85.26</span>
                         元
+                        <span class="origin">87.00</span>
                     </span>
                     <span class="jkSelectAreaDown">获得75小时时间</span>
-                </div>
-                <div class="select" value='116'>
+                </div> -->
+                <div class="select" value='100.00'>
+                    <span class="discount"></span>
                     <span class="jkSelectAreaUp">
-                        <span class="jkSelectAreaMoney">
-                            116
-                        </span>
+                        <span class="jkSelectAreaMoney">98.00</span>
                         元
+                        <span class="origin">100.00</span>
                     </span>
                     <span class="jkSelectAreaDown">获得100小时时间</span>
                 </div>
@@ -302,7 +530,6 @@
             充值
         </div>
     </div>
-
 </body>
 
 </html>

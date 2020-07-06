@@ -1,0 +1,69 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-02 18:22:15
+ * @LastEditTime: 2020-06-11 18:43:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\性能监控.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" placeholder="xxxxxxxxxxxxxx">
+    <script>
+
+        const observer = new PerformanceObserver(list => {
+            for (let entry in list.getEntries()) {
+                console.log(entry)
+            }
+        })
+
+        // observer.observe({ entryTypes: ['paint'] })
+
+        // performance.getEntriesByType('resource')
+
+        // function window.onbeforeunload()
+        window.onbeforeunload = function () {
+            console.log("关闭窗口")
+            alert("关闭窗口")
+        }
+
+        window.onunload = function () {
+            console.log("关闭窗口")
+            alert("关闭窗口")
+        }
+
+
+        // 性能监控
+        window.addEventListener("beforeunload", function (event) {
+            // Cancel the event as stated by the standard.
+            // event.preventDefault();
+
+            // Logs.imgLog_Api();
+            // Chrome requires returnValue to be set.
+            // event.returnValue = '';
+        });
+
+        window.addEventListener("unload", function (event) {
+            // Cancel the event as stated by the standard.
+            // event.preventDefault();
+
+            Logs.imgLog_Api();
+            // Chrome requires returnValue to be set.
+            // event.returnValue = '';
+        });
+
+
+        // window.οnunlοad
+    </script>
+</body>
+
+</html>

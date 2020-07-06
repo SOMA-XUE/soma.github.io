@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .7);
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .modalMain {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal">
+        <div class="modalMain"></div>
+    </div>
+
+    <button class="showModal">showModal</button>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        // var modal = document.querySelector('.moal')
+
+        $(function () {
+            $('.modal').on('click', function () {
+                $(this).hide()
+            })
+
+            $('.modalMain').on('click', function (e) {
+                e.stopPropagation();
+            })
+
+            $('.showModal').on('click', function () {
+                $('.modal').show()
+            })
+        })
+    </script>
+</body>
+
+</html>
