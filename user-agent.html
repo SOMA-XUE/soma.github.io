@@ -1,0 +1,150 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-19 10:59:43
+ * @LastEditTime: 2020-09-01 15:19:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\user-agent.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .main {
+      /* display: flex;
+      justify-content: space-around; */
+    }
+
+    .main div {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ccc;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <span class="main">
+    <div class="left"></div>
+    <div class="right"></div>
+    <!-- <div></div> -->
+
+  </span>
+
+  <img src="https//captcha.sdo.com/fcgi-bin/show_img.fcgi?appid=125&session_key=b7YFNMNxPtKNBMbg&gameid=201&areaid=1" alt="">
+  <script src="js/jquery.js"></script>
+  <script>
+    // console.log('user', navigator.userAgent)
+    $(function () {
+      $(document).on('scroll', function () {
+        var windowHeight = window.innerHeight;
+
+        var rect = document.querySelector('.main').getBoundingClientRect();
+
+        var top = rect.top;
+
+        var bottom = rect.bottom;
+
+        var isTopInWindow = 0 < top && top < windowHeight;
+
+        var isBottomInWindow = 0 < bottom && bottom <= windowHeight;
+
+        //     return isTopInWindow || isBottomInWindow;
+        var isInView = isTopInWindow || isBottomInWindow;
+
+        console.log(isInView, top, bottom, windowHeight)
+      })
+    })
+
+    let firstEnter = true;
+    let funcArray = []
+
+    function xx(func) {
+      let index = 0;
+      funcArray.push(func);
+      let tempFunc = funcArray.find((item, index) => {
+        index = index;
+        return !item.done
+      });
+      if (firstEnter) {
+        tempFunc.func();
+        firstEnter = false;
+      } else {
+        while(1) {
+          if(funcArray[index-1].done) {
+            return tempFunc.func();
+          } else {
+            xx();
+          }
+        }
+      }
+
+    }
+
+    // let func1 = function () {
+    //   console.log('enter func1')
+    //   setTimeout(() => {
+    //     console.log('func1 done')
+    //     this.__proto__.done = true;
+    //   }, 1000)
+    // }
+
+    // let func2 = function () {
+    //   console.log('enter func2')
+    //   setTimeout(() => {
+    //     console.log('func2 done')
+    //     this.__proto__.done = true;
+    //   }, 1000)
+    // }
+
+    class func {
+      done = false;
+      constructor(name) {
+        this.ajax = name
+      }
+      func = () => {
+        console.log('enter' + this.ajax)
+        setTimeout(() => {
+          console.log(this.ajax + 'done')
+          this.done = true;
+        }, 1000)
+      }
+    }
+
+    // class func2 {
+    //   done = false;
+    //   func = () => {
+    //     console.log('enter func2')
+    //     setTimeout(() => {
+    //       console.log('func2 done')
+    //       this.done = true;
+    //     }, 1000)
+    //   }
+    // }
+
+    let func1 = new func('func1')
+    let func2 = new func('func2')
+
+    // xx(func1)
+    // xx(func2)
+  </script>
+</body>
+
+</html>

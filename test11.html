@@ -1,0 +1,57 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-09-03 17:14:03
+ * @LastEditTime: 2020-09-09 17:09:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\test11.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #password {}
+
+    .inputPassword {
+      font-family: 'password';
+    }
+
+    @font-face {
+      font-family: 'password';
+      src: url(./password.ttf);
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" autocomplete="off">
+  <input type="text" name="password" id="password" autocomplete="off">
+  <input type="password" autocomplete="off">
+  <button id="btn1">btn1</button>
+  <button id="btn2">btn2</button>
+
+</body>
+
+<script src="./js/jquery.js"></script>
+<script>
+  $(function () {
+    $('#btn1').on('click', function () {
+      console.log($('#password').val())
+    })
+    $('#btn2').on('click', function () {
+      $('#password').addClass('inputPassword')
+    })
+    for (
+      let i = (setTimeout(_ => console.log('a->', i)));
+      setTimeout(_ => console.log('b->', i)), i < 2;
+      i++) {
+      i++
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-13 10:55:35
+ * @LastEditTime: 2020-08-17 10:18:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\phone.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      position: relative;
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <p>width
+    <span id="width"></span>
+  </p>
+
+  <p>
+    height:
+    <span id="height">
+
+    </span>
+  </p> -->
+
+
+  <div>
+    <span class="span">
+      xxxxxxxx
+    </span>
+
+    <input type="text" id="name">
+  </div>
+
+  <script src="./js/jquery.js"></script>
+  <script>
+    // document.querySelector('#width').innerHTML = window.innerHeight
+    // document.querySelector('#height').innerHTML = window.innerWidth
+
+    $(function () {
+      $('.span').on('click', function () {
+        $('#name').focus();
+      })
+
+      $('#name').on({
+        focus: function () {
+          $('.span').css('color', 'grey')
+        },
+        blur:function() {
+          $('.span').css('color', 'black')
+
+        },
+        input:function() {
+          if(this)
+        }
+      })
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-05 10:42:38
+ * @LastEditTime: 2020-08-05 18:54:43
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\testCallback.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="text" id="xx">
+  <script src="./js/jquery.js"></script>
+  <script>
+    $(function() {
+      // var temp = '';
+      // $('#xx').on('input',(e) => {
+      //   temp = e.currentTarget.value
+      //   console.log('target', temp)
+      // })
+
+      let tempObj = {
+        name:[0,1,2]
+      }
+      let allData = {};
+      for (let i in tempObj) {
+            allData[i] = tempObj[i].map(item => {
+                if (item === 0) {
+                    return null;
+                } else {
+                    return item;
+                }
+            });
+        }
+        console.log(allData)
+    })
+  </script>
+  <script>
+
+
+    function Function1() {
+      console.log('Function1 done')
+      Function2();
+    }
+
+    function Function2() {
+      console.log('Function2 done')
+      Function3();
+    }
+
+    function Function3() {
+      console.log('Function3 done')
+      Function4();
+    }
+
+    function Function4() {
+      console.log('Function4 done')
+      Function1();
+      // Function2();
+    }
+
+    // Function1();
+  </script>
+</body>
+
+</html>
