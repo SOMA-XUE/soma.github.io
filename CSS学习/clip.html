@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fixedOne {
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            top: 100px;
+            background: red;
+        }
+
+        .fixedOne img {
+            position: absolute;
+            border: 5px solid blue;
+        }
+
+        /*
+        *IE8及以上浏览器，Google，FF都支持
+        *剪切部分的计算，包含边框
+        *说明，不能使用百分比设置
+    */
+        /*.fixedOne img {
+        clip: rect(5px,auto,auto,0px);
+    }*/
+        /*.fixedOne img {
+        clip: rect(5px,auto,auto,10px);
+    }*/
+        .fixedOne img {
+            clip: rect(5px, 105px, 50px, 2px);
+            clip: rect(5px 105px 50px 2px);
+            /*IE87 及以下浏览器支持，解决方法*/
+        }
+
+        .fixedOne img {
+            width: 120%;
+            height: 120%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixedOne">
+        <img src="./img/fireKeeper.jpg" alt="">
+    </div>
+</body>
+
+</html>

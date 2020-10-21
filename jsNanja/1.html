@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <script src="./1.js"></script>
+  <!-- <script src="./1.js"></script> -->
   <script>
-    window.addEventListener('load',() => {
-      console.log('hello')
-    })
+    // window.addEventListener('load',() => {
+    //   console.log('hello')
+    // })
     // alert(1)
 
   </script>
@@ -15,9 +15,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
+  <a href="http://unionpay.sdo.com/mcashier/pay?orderId=UM0000000000PO200918140307000001&orderToken=e50a9b2546f0484d9b2d725eea2c34b0&loginToken=0">clci</a>
+  <div id="bb">history.go(-1)</div>
 <body>
   <div>111111</div>
+  <script>
+    // let aa = document.querySelector('#bb')
+    // aa.addEventListener('click', () => {
+    //   // history.go(-1);
+    //   window.history.back();
+    // })
+
+    function getUrlParam(url, name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = url.substr(url.indexOf("#") + 1).match(reg);
+            if (r != null) {
+                // return decodeURIComponent(r[2]);
+                return r[2];
+
+            }
+            var r2 = url.indexOf("#") > -1 ? url.substring(url.indexOf("?") + 1, url.indexOf("#")).match(reg) : url.substr(url.indexOf("?") + 1).match(reg);
+            if (r2 != null) {
+                return r2[2];
+            }
+            return null;
+        }
+        // let xx = getUrlParam('http://unionpay.sdo.com/mcashier/pay?orderId=UM0000000000PO200918140307000001&orderToken=e50a9b2546f0484d9b2d725eea2c34b0&loginToken=0&backUrl=https://qb.sdo.com/m/pay/payconfirm.html?pay_info=%7B%22userIdDest%22%3A%22M3100000216%22%2C%22orderType%22%3A10%2C%22itemType%22%3A10%2C%22itemId%22%3A%2200089000000016006775648670005619%22%2C%22itemDetail%22%3A%7B%22user_id_src%22%3A%221004883748%22%2C%22policyNum%22%3A%22GBDO1601023028297508354774360229%22%2C%22sumInsured%22%3A%22200%22%2C%22game_name%22%3A%22%E5%BD%A9%E8%99%B9%E5%B2%9B%22%2C%22mergePay%22%3A1%2C%22policyAmount%22%3A%2210%22%2C%22policyHolder%22%3A%223100000216%22%2C%22maxPayment%22%3A%22200%22%2C%22user_id_dest%22%3A%221004883736%22%2C%22envType%22%3A%22%22%2C%22bt_insurance_orderId%22%3A%22623614639%22%7D%2C%22subject%22%3A%22%5B%E7%8B%82%E6%88%98%E5%A3%AB52%E7%BA%A7%5D%22%2C%22mergePay%22%3A1%2C%22gameAppId%22%3A39%2C%22traceNo%22%3A%22MPO00039000200271191601023028297%22%2C%22amount%22%3A200%2C%22order_url%22%3A%22%2F%2Fwww.gmmsj.com%2Fh5%2Forder%2Fdetail%2Findex.html%3ForderId%3DMPO00039000200271191601023028297%26goods_type%3D10%26game_id%3D39%26from%3Dqb%22%7D', 'backUrl')
+        
+        let xx = 'https://qb.sdo.com/m/pay/payconfirm.html?pay_info={%22userIdDest%22:%22M3100000216%22,%22orderType%22:10,%22itemType%22:10,%22itemId%22:%2200089000000016006775648670005619%22,%22itemDetail%22:{%22user_id_src%22:%221004883748%22,%22policyNum%22:%22GBDO1601023028297508354774360229%22,%22sumInsured%22:%22200%22,%22game_name%22:%22%E5%BD%A9%E8%99%B9%E5%B2%9B%22,%22mergePay%22:1,%22policyAmount%22:%2210%22,%22policyHolder%22:%223100000216%22,%22maxPayment%22:%22200%22,%22user_id_dest%22:%221004883736%22,%22envType%22:%22%22,%22bt_insurance_orderId%22:%22623614639%22},%22subject%22:%22[%E7%8B%82%E6%88%98%E5%A3%AB52%E7%BA%A7]%22,%22mergePay%22:1,%22gameAppId%22:39,%22traceNo%22:%22MPO00039000200271191601023028297%22,%22amount%22:200,%22order_url%22:%22//www.gmmsj.com/h5/order/detail/index.html?orderId=MPO00039000200271191601023028297&goods_type=10&game_id=39&from=qb%22}';
+        let xx = 'https://qb.sdo.com/m/pay/payconfirm.html?pay_info={%22userIdDest%22:%22M3100000216%22,%22orderType%22:10,%22itemType%22:10,%22itemId%22:%2200089000000016006775648670005619%22,%22itemDetail%22:{%22user_id_src%22:%221004883748%22,%22policyNum%22:%22GBDO1601023028297508354774360229%22,%22sumInsured%22:%22200%22,%22game_name%22:%22%E5%BD%A9%E8%99%B9%E5%B2%9B%22,%22mergePay%22:1,%22policyAmount%22:%2210%22,%22policyHolder%22:%223100000216%22,%22maxPayment%22:%22200%22,%22user_id_dest%22:%221004883736%22,%22envType%22:%22%22,%22bt_insurance_orderId%22:%22623614639%22},%22subject%22:%22[%E7%8B%82%E6%88%98%E5%A3%AB52%E7%BA%A7]%22,%22mergePay%22:1,%22gameAppId%22:39,%22traceNo%22:%22MPO00039000200271191601023028297%22,%22amount%22:200,%22order_url%22:%22//www.gmmsj.com/h5/order/detail/index.html?orderId=MPO00039000200271191601023028297&goods_type=10&game_id=39&from=qb%22}'
+        // let payInfo = getUrlParam(xx, 'pay_info')
+        // console.log('xx', xx)
+
+        // console.log('payInfo', payInfo)
+        
+        // console.log(JSON.parse(decodeURIComponent(payInfo)))
+
+
+        let payInfo = getUrlParam(xx, 'pay_info')
+        // console.log('xx', xx)
+
+        console.log('payInfo', payInfo)
+        
+        console.log(JSON.parse(decodeURIComponent(payInfo)))
+  </script>
 </body>
 
 </html>

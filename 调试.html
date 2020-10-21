@@ -8,11 +8,13 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="m">xxxxxxxxxxxxxxxxx</div>
     <script>
@@ -28,12 +30,15 @@
         function xx() {
             console.log('222')
         }
+        /*网页调试工具*/
+        (function () {
+            var d = document;
+            var s = d.createElement("script");
+            s.setAttribute("src", "https://unionpay.sdo.com/mcashier/ext/rxcq/lib/vconsole.min.js"); d.body.appendChild(s);
+            window.addEventListener('load', () => { var $vConsole = new VConsole(); })
+        })();
 
-    </script>
-
-    <script>
-
-        xx();
     </script>
 </body>
+
 </html>
