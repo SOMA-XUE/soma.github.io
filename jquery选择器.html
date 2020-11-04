@@ -1,0 +1,63 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-03 16:29:37
+ * @LastEditTime: 2020-11-04 15:17:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\jquery选择器.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            height: 100px;
+            background-position: center bottom;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .main::after {
+            margin: -50px;
+
+            content: '';
+            width: 100px;
+            height: 100px;
+            /* background-color: red; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(https://gskd.sdoprofile.com/daoyu/jzmf/img_list-8.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main"></div>
+    <img src="https://gskd.sdoprofile.com/daoyu/jzmf/img_list-8.jpg" alt="">
+
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(function () {
+            // after 选择器选不到css里设置的对应的
+            $('.main:after').css('background-image', `url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604402725946&di=a975a9a49264b0132f2232c702d0ea9e&imgtype=0&src=http%3A%2F%2Fclipartmag.com%2Fimages%2Fturtle-cartoons-pictures-23.png)`)
+
+            $('.main').fadeTo('slow', 0.3, () => {
+                $('.main').css('background-image', `url(https://gskd.sdoprofile.com/daoyu/jzmf/img_list-8.jpg)`)
+            })
+
+            setTimeout(() => {
+
+            }, 2000);
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+         .container{
+            width: 287px;
+            height: 285px;
+            background-image: url(../img/fireKeeper.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .frosted-glass{
+            width: 287px;
+            height: 200px;
+            background: inherit;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -ms-filter: blur(5px);
+            -o-filter: blur(5px);
+            filter: blur(5px);
+            filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false);
+        }
+
+        .weather{
+            width:80px;
+            height:80px;
+            margin-top: -200px;
+            margin-left: 100px;
+            position: relative;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='frosted-glass'></div>
+        <img class='weather' src='../img/btn_sx.png'>
+    </div>
+</body>
+</html>
