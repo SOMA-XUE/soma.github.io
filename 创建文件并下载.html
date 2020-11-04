@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div>
         <a href="#" id="downloadOperatorReport"><span data-reactid="47" style="color: #1AB9BB">导出报告</span></a>
@@ -31,9 +33,24 @@
 
             var appName = 'download';
             var urlObject = window.URL || window.webkitURL || window;
-            var export_blob = new Blob([data], {type: 'applicaton/html'});
+            var export_blob = new Blob([data], { type: 'applicaton/html' });
             // 创建a标签，需要添加属性download（文件名），href（url，createObjectURL（blob对象））
             var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+
+            // 参考地址
+            // https://www.cnblogs.com/lsqy/p/11447528.html
+            // URL.createObjectURL() 静态方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL。
+            // 这个 URL 的生命周期和创建它的窗口中的 document 绑定。
+            // 这个新的URL 对象表示指定的 File 对象或 Blob 对象。相当于这个方法创建了一个传入对象的内存引用地址
+            // objectURL = URL.createObjectURL(object);
+            // 参数说明
+            // object 是用于创建 URL 的 File 对象、Blob 对象或者 MediaSource 对象。​
+
+            // URL.revokeObjectURL()
+            // URL.revokeObjectURL() 静态方法用来释放一个之前已经存在的、通过调用 URL.createObjectURL() 创建的 URL 对象。当你结束使用某个 URL 对象之后，应该通过调用这个方法来让浏览器知道不用在内存中继续保留对这个文件的引用了。
+            // 你可以在 sourceopen 被处理之后的任何时候调用 revokeObjectURL()。这是因为 createObjectURL() 仅仅意味着将一个媒体元素的 src 属性关联到一个 MediaSource 对象上去。
+            // 调用revokeObjectURL() 使这个潜在的对象回到原来的地方，允许平台在合适的时机进行垃圾收集。
+            // window.URL.revokeObjectURL(objectURL);
             if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0 || navigator.userAgent.indexOf("MSIE") > 0) {
                 save_link.href = urlObject.createObjectURL(export_blob);
                 save_link.download = "运营商报告" + appName + ".html";
@@ -59,4 +76,5 @@
     </script>
 
 </body>
+
 </html>
