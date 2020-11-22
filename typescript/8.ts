@@ -24,6 +24,7 @@ interface IArguments {
     length: number;
     callee: Function;
 }
+
 function sum(...args:any[]) {
     let args2: IArguments = arguments;
 
