@@ -1,31 +1,108 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-04-30 15:11:46
+ * @LastEditTime: 2020-11-20 10:15:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\iframe\index.html
+-->
 <html>
+
 <head>
 
-<title>根目录</title>
+    <title>根目录</title>
 
-<script>
-function changeSrc1()
-{
-    document.getElementById("iframe1").setAttribute("src","1.html");
-}
-function changeSrc2()
-{
-    document.getElementById("iframe1").setAttribute("src","2.html");
-}
-</script>
+    <script>
+        function changeSrc1() {
+            document.getElementById("iframe1").setAttribute("src", "1.html");
+        }
+        function changeSrc2() {
+            document.getElementById("iframe1").setAttribute("src", "2.html");
+        }
+    </script>
 
 </head>
-<body>
-<div>
-    <button id="btn-sub1" href="1.html" target="iframe1" onclick="changeSrc1()">切换到页面一</button>
-    <button id="btn-sub2" href="2.html" target="iframe1" onclick="changeSrc2()">切换到页面二</button>
-    <a href="1.html" target="iframe1">切换到页面一</a>
-    <a href="2.html" target="iframe1">切换到页面二</a>
-</div>
 
-<div>
-    <iframe name="iframe1" id="iframe1" src="1.html">
-    </iframe>
-</div>
+<body>
+    <div>
+        <button id="btn-sub1" href="1.html" target="iframe1" onclick="changeSrc1()">切换到页面一</button>
+        <button id="btn-sub2" href="2.html" target="iframe1" onclick="changeSrc2()">切换到页面二</button>
+        <a href="1.html" target="iframe1">切换到页面一</a>
+        <a href="2.html" target="iframe1">切换到页面二</a>
+    </div>
+
+    <div>
+        <iframe name="iframe1" id="iframe1" src="1.html" scrolling="no">
+        </iframe>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script>
+        $(function () {
+            function setIframeHeight(id) {
+                try {
+                    var iframe = document.getElementById(id);
+                    if (iframe.attachEvent) {
+                        iframe.attachEvent("onload", function () {
+                            iframe.height = iframe.contentWindow.document.documentElement.scrollHeight;
+                        });
+                        return;
+                    } else {
+                        iframe.onload = function () {
+                            iframe.height = iframe.contentDocument.body.scrollHeight;
+                        };
+                        return;
+                    }
+                } catch (e) {
+                    throw new Error('setIframeHeight Error');
+                }
+            }
+
+            // setIframeHeight('iframe1')
+
+
+            // var body = $('#iframe1').contentWindow.document.body;
+
+            // var ght = $(body).height();
+            // //4.改变iframe高度
+            // $('#iframe1').attr("height", ght + 30);
+            var iframeids = ["iframe1"]
+            var iframehide = "yes"
+
+            function dyniframesize() {
+                var dyniframe = new Array()
+                for (i = 0; i < iframeids.length; i++) {
+                    if (document.getElementById) {
+                        dyniframe[dyniframe.length] = document.getElementById(iframeids[i]);
+                        if (dyniframe[i] && !window.opera) {
+                            dyniframe[i].style.display = "block"
+                            if (dyniframe[i].contentDocument && dyniframe[i].contentDocument.body.offsetHeight)
+                                dyniframe[i].height = dyniframe[i].contentDocument.body.offsetHeight;
+                            else if (dyniframe[i].Document && dyniframe[i].Document.body.scrollHeight)
+                                dyniframe[i].height = dyniframe[i].Document.body.scrollHeight;
+                        }
+                    }
+                    if ((document.all || document.getElementById) && iframehide == "no") {
+                        var tempobj = document.all ? document.all[iframeids[i]] : document.getElementById(iframeids[i])
+                        tempobj.style.display = "block"
+                    }
+                }
+            }
+
+            if (window.addEventListener) {
+                window.addEventListener("load", dyniframesize, false)
+
+            }
+            else if (window.attachEvent) {
+                window.attachEvent("onload", dyniframesize)
+
+            }
+            else {
+                window.onload = dyniframesize
+            }
+        })
+
+
+    </script>
 </body>
+
 </html>

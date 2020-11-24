@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-21 16:46:59
+ * @LastEditTime: 2020-11-10 17:46:48
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\CSS学习\font.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,22 +14,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        html,body {
+            height: 100%;
+        }
         .main {
             /* width: 30px; */
-            height: 2.7rem;
-            line-height: 2.7rem;
+            /* height: 2.7rem; */
+            height: 10%;
+            /* line-height: 2.7rem; */
+            line-height: normal;
             border-bottom: 1px solid #F0EFF5;
             font-weight: bold;
             white-space:nowrap;
             overflow:hidden;
             text-overflow: ellipsis;
             padding: 0 5px;
+            border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
     <div class="main">你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</div>
+    <div class="main2"></div>
+    <script> 
+        document.querySelector('.main2').innerHTML = '<p>111</p>'
+    </script>
 </body>
 
 </html>

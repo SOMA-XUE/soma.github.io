@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-17 14:34:14
- * @LastEditTime: 2020-11-17 15:37:50
+ * @LastEditTime: 2020-11-18 14:45:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \soma.github.io\typescript\8.ts
@@ -24,7 +24,32 @@ interface IArguments {
     length: number;
     callee: Function;
 }
-function sum(...args:any[]) {
+function sum(...args: any[]) {
     let args2: IArguments = arguments;
 
 }
+
+// 映射类型 在定义时，用in操作符批量定义
+namespace d {
+    interface Person {
+        name: string;
+        age: number;
+        height: number;
+    }
+    type Person1 = {
+        [key in keyof Person]?: Person[key];
+    }
+    
+    type Partial<T> = {
+        [key in keyof T]?: T[key]
+    }
+    type PartialPerson = Partial<Person>;
+
+    let david: Person1 = {
+        name: 'david'
+    }
+    let lucy: PartialPerson = {
+        name: 'lucy'
+    }
+}
+
