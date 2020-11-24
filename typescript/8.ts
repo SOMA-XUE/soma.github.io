@@ -26,7 +26,26 @@ interface IArguments {
 }
 function sum(...args: any[]) {
     let args2: IArguments = arguments;
+}
 
+// !为断言，肯定不为null
+let root: HTMLElement | null = document.getElementById('xxx')
+let children: HTMLCollection = root!.children;
+let childNodes: NodeListOf<ChildNode> = root!.childNodes;
+
+class MyArray<T> {
+    private list: T[] = [];
+    add(val: T) {
+        this.list.push(val)
+    }
+
+    getMax(): T {
+        let max = this.list[0]
+        for(let i of this.list) {
+            max = max>i ? max : i;
+        }
+        return max;
+    }
 }
 
 // 映射类型 在定义时，用in操作符批量定义
@@ -53,3 +72,9 @@ namespace d {
     }
 }
 
+let arr3 = new MyArray<number>();
+
+arr3.add(1);
+arr3.add(2);
+let res3:number = arr3.getMax();
+console.log(res3)
