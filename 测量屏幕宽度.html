@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        thead {
+            background-color: pink;
+        }
+
+        tbody {
+            background-color: skyblue;
+        }
+
+        thead tr td {
+            width: 200px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main"></div>
+    <script>
+        let main = document.querySelector('.main')
+        main.innerHTML = main.clientWidth;
+    </script>
+</body>
+
+</html>
