@@ -1,0 +1,243 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=line-gradient
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .x1 {
+            background-color: #f6efa6;
+        }
+
+        .x2 {
+
+            background-color: #d88273;
+        }
+
+        .x3 {
+
+            background-color: #bf444c;
+        }
+    </style>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div class="x1"></div>
+    <div class="x2"></div>
+    <div class="x3"></div>
+    <div id="container" style="height: 100%"></div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+        -->
+    <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+    <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+    <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+        -->
+    <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+        -->
+
+    <script type="text/javascript">
+
+    // gradientColor:['#000','#888','#fff','#f6efa6','#d88273','#bf444c'],
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+
+        var option;
+
+
+
+
+        var data = [];
+
+        var timeData = [];
+
+        var yMinData = -5;
+
+        var yMaxData = 5
+
+
+        option = {
+
+            toolbox: {                               //增加保存，切换图表功能
+
+                show: true,
+
+                right: '5%',
+
+                feature: {
+
+                    saveAsImage: {
+
+                        show: true,
+
+                        excludeComponents: ['toolbox'],
+
+                        pixelRatio: 2
+
+                    },
+
+                    magicType: {
+
+                        type: ['line', 'bar']
+
+                    }
+
+                }
+
+            },
+
+            xAxis: {
+
+                type: 'category',
+
+                data: timeData,
+
+                name: '时间'
+
+            },
+
+            title: {
+
+                show: true,
+
+                text: titleName,
+
+                left: 'center',
+
+            },
+
+            tooltip: {
+
+                trigger: 'axis'
+
+            },
+
+            legend: {
+
+                data: [name],
+
+                left: 'middle',
+
+                top: 'bottom',
+
+            },
+
+            yAxis: {
+
+                type: 'value',
+
+                max: yMaxData,
+
+                min: yMinData,
+
+                name: '相对误差(%)',
+
+            },
+
+            series: [{
+
+                name: name,
+
+                lineStyle: {
+
+                    normal: {
+
+                        width: 2,
+
+                        type: 'dashed'
+
+                    }
+
+                },
+
+                itemStyle: {
+
+                    normal: {
+
+                        borderWidth: 3,
+
+                        color: 'red'
+
+                    }
+
+                },
+
+                data: data,
+
+                type: 'line',
+
+                symbol: 'triangle',
+
+                symbolSize: 20,
+
+                markLine: {
+
+                    lineStyle: {
+
+                        normal: {
+
+                            color: 'red'
+
+                        }
+
+                    },
+
+                    data: [
+
+                        { yAxis: 5, name: '平均值' },
+
+                        { yAxis: -5, name: '111' }
+
+                    ]
+
+                },
+
+            }],
+
+            visualMap: [{           //改变线的颜色
+
+                show: true,
+
+                dimension: 1,
+
+                type: 'piecewise',
+
+                right: '1%',
+
+                top: '6%',
+
+                pieces: [{ min: 5, max: yMaxData, color: 'red', label: '不合格' }, { min: yMinData, max: -5, color: 'red', label: '不合格' }, { min: -5, max: 5, color: 'green', label: '合格' }],  //pieces的值由动态数据决定
+
+                outOfRange: {
+
+                    color: 'green',
+
+                    symbol: 'triangle',
+
+                }
+
+            }],
+
+        }
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+    </script>
+</body>
+
+</html>

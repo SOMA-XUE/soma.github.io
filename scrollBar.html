@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 300px;
+            height: 300px;
+            overflow: auto;
+        }
+
+        .box {
+            width: 3000px;
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body οncοntextmenu='return false' //禁止右键 οndragstart='return false' //禁止拖动 onselectstart='return false' //禁止选中
+    οnselect='document.selection.empty()' //禁止选中 οncοpy='document.selection.empty()' //禁止复制 onbeforecopy='return false'
+    // 禁止复制 οnmοuseup='document.selection.empty()'>
+    <div class="main">
+        <div class="box"></div>
+    </div>
+    <div class="tablemy" >
+        <table onbeforecopy='return true' onselectstart='return true'>
+            <!-- <th>
+                
+            </th> -->
+            <thead>
+                <tr>
+                    <td>th1</td>
+                    <td>th2</td>
+                    <td>th3</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>th1</td>
+                    <td>th2</td>
+                    <td>th3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

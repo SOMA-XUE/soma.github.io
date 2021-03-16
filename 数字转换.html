@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function getThousandNum2(num, str = '-') {
+            if (typeof (num) === 'undefined') {
+                return str;
+            }
+
+            if (num === -1) {
+                // 表示无限制
+                return '';
+            }
+
+            let newNum = String(num);
+            let floatNum = newNum.split('.')[1] || '';
+            console.log('newNum', newNum)
+
+            console.log('float', floatNum)
+            if (floatNum.length === 0) {
+                newNum = newNum.concat('.00');
+            } else if (floatNum.length === 1) {
+                newNum = newNum.concat('0');
+            } else if (floatNum.length >= 3) {
+                newNum = newNum.split('.')[0] + '.' + floatNum.slice(0, 2);
+            }
+
+            console.log('newNum---2', newNum);
+            newNum = newNum.padStart(15, '0');
+            newNum = newNum.replace(/\d+/, function (n) {
+                return n.replace(/(\d)(?=(\d{3})+$)/g, function ($1) {
+                    return $1 + ',';
+                });
+            });
+
+            return newNum;
+        }
+
+        let temp = getThousandNum2(29730.5);
+        console.log('temp', temp);
+    </script>
+</body>
+
+</html>
