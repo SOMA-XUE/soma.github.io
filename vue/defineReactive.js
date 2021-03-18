@@ -16,7 +16,7 @@ function defineReactive(data, key, val) {
             val = newValue;
         }
     })
-}
+} 
 
 let temp = {}
 defineReactive(temp,'name')
