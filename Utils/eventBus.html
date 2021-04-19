@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-19 18:28:18
+ * @LastEditTime: 2021-04-19 18:33:33
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \soma.github.io\Utils\eventBus.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const eventBus = {
+            callbacks: {}
+        }
+
+        eventBus.on = function(type, callback) {
+            if(this.callbacks[type]) {
+                this.callbacks[type].push(callback)
+            } else {
+                this.callbacks[type] = [callback];
+            }
+        }
+
+        eventBus.emit = function(type, data) {
+            if(this.callbacks[type] && this.callbacks.length > 0) {
+                this.callbacks[type].forEach(callback => callback(data))
+            }
+        }
+
+        eventBus.off = function(eventName) {
+            if(eventName) {
+                delete this.callbacks[eventName]
+            } else {
+                this.callbacks = {}
+            }
+        }
+    </script>
+</body>
+</html>
